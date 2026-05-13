@@ -1036,33 +1036,32 @@ footer{
   image-rendering:pixelated;
 }
 
-/* STREETLAMPS — fixed left & right edges, anchored to ground at bottom */
+/* STREETLAMPS — fixed left & right edges, full height (lamp head at nav level) */
 .streetlamp{
-  position:absolute; bottom:0;
-  width:84px; height:520px;
+  position:absolute; top:0; bottom:0;
+  width:84px;
   pointer-events:none;
   z-index:51;
 }
 .streetlamp-left{ left:0 }
-.streetlamp-right{ right:0 }
+.streetlamp-right{ right:0; transform:scaleX(-1); transform-origin:center }
 .streetlamp svg{
   width:100%; height:100%; display:block;
   image-rendering:pixelated;
   filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.6));
 }
-.streetlamp-right svg{ transform:scaleX(-1); transform-origin:center }
-/* Warm halo glow extending into viewport from the lamp head (near top of container) */
+/* Warm halo glow at the lamp head (near top of container) */
 .streetlamp::after{
   content:""; position:absolute;
-  top:-30px; width:320px; height:320px;
+  top:-40px; width:340px; height:340px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,228,138,0.30) 0%, rgba(255,228,138,0.10) 35%, transparent 70%);
+  background:radial-gradient(circle, rgba(255,228,138,0.32) 0%, rgba(255,228,138,0.12) 35%, transparent 70%);
   pointer-events:none;
   z-index:-1;
   animation:lampHaloFlicker 4.6s infinite;
 }
-.streetlamp-left::after{ left:30px }
-.streetlamp-right::after{ right:30px }
+.streetlamp-left::after{ left:20px }
+.streetlamp-right::after{ left:20px } /* container is scaleX(-1) flipped so visually this is on the inner side */
 @keyframes lampHaloFlicker{
   0%, 28%, 32%, 55%, 60%, 84%, 86%, 100%{ opacity:1 }
   30%{ opacity:0.40 }
@@ -1070,9 +1069,28 @@ footer{
   85%{ opacity:0.25 }
 }
 @media (max-width:540px){
-  .streetlamp{ width:54px; height:360px }
+  .streetlamp{ width:56px }
   .streetlamp::after{ width:200px; height:200px }
 }
+
+/* NAV CAT — single cat walking back-and-forth across the top of the nav, light mode only */
+.nav-cat{
+  position:fixed; top:0;
+  width:38px; height:22px;
+  z-index:210; /* above nav */
+  pointer-events:none;
+  animation:catNavWalk 26s linear infinite;
+}
+.nav-cat svg{ width:100%; height:100%; display:block; image-rendering:pixelated }
+@keyframes catNavWalk{
+  0%   { left:-60px; transform:scaleX(1) }
+  46%  { left:calc(100vw + 60px); transform:scaleX(1) }
+  50%  { left:calc(100vw + 60px); transform:scaleX(-1) }
+  96%  { left:-60px; transform:scaleX(-1) }
+  100% { left:-60px; transform:scaleX(1) }
+}
+.light-only{ display:none }
+:root[data-theme="light"] .light-only{ display:block }
 
 /* ============================================================
    GROUND STRIP + SIDE PATHS (dark mode atmosphere)
@@ -1097,69 +1115,6 @@ footer{
   box-shadow:inset 0 2px 0 rgba(0,0,0,0.35);
 }
 
-.side-path{
-  position:fixed; top:0; bottom:34px;
-  width:60px; z-index:8;
-  pointer-events:none;
-  background-color:#1F1410;
-  background-image:
-    /* horizontal step bands */
-    repeating-linear-gradient(180deg,
-      transparent 0 38px,
-      rgba(107,63,30,0.55) 38px 40px,
-      rgba(0,0,0,0.6) 40px 42px),
-    /* subtle vertical edge */
-    linear-gradient(90deg,
-      rgba(0,0,0,0.6) 0 3px,
-      transparent 3px calc(100% - 3px),
-      rgba(0,0,0,0.6) calc(100% - 3px) 100%);
-  mix-blend-mode:multiply;
-  opacity:0.95;
-}
-.side-path-left{ left:0 }
-.side-path-right{ right:0 }
-@media (max-width:540px){
-  .side-path{ width:34px }
-}
-
-/* ============================================================
-   VERTICAL WALKERS + CATS — pan top↔bottom on side paths (dark mode)
-   ============================================================ */
-.walker-vert{
-  position:absolute;
-  width:22px; height:32px;
-  z-index:50;
-  pointer-events:none;
-}
-.amb-cat-vert{
-  position:absolute;
-  width:18px; height:28px;
-  z-index:50;
-  pointer-events:none;
-}
-.walker-vert svg, .amb-cat-vert svg{ width:100%; height:100%; display:block; image-rendering:pixelated }
-
-/* down-walking: appears at top, descends */
-.walker-vert.down, .amb-cat-vert.down{
-  animation:walkVertDown var(--dur, 28s) linear infinite;
-}
-/* up-walking: appears at bottom, ascends */
-.walker-vert.up, .amb-cat-vert.up{
-  animation:walkVertUp var(--dur, 28s) linear infinite;
-}
-/* cats need rotation so they face their direction of travel */
-.amb-cat-vert svg{ transform:rotate(90deg) }
-.amb-cat-vert.up svg{ transform:rotate(-90deg) }
-
-@keyframes walkVertDown{
-  0%  { top:-60px }
-  100%{ top:calc(100vh - 40px) }
-}
-@keyframes walkVertUp{
-  0%  { top:calc(100vh - 40px) }
-  100%{ top:-60px }
-}
-
 /* FIREFLY */
 .firefly{
   width:8px; height:8px;
@@ -1178,23 +1133,6 @@ footer{
 @keyframes twinkleFly{
   0%,100%{ opacity:0.2 }
   50%{ opacity:1 }
-}
-
-/* WALKER and CAT — horizontal traversers */
-.walker{
-  width:28px; height:42px;
-  bottom:4%;
-  animation:walkAcross var(--dur,32s) linear infinite;
-}
-.walker.reverse{ transform:scaleX(-1); animation:walkAcross var(--dur,32s) linear infinite reverse }
-@keyframes walkAcross{
-  0%{ left:-50px }
-  100%{ left:calc(100vw + 50px) }
-}
-.amb-cat{
-  width:48px; height:36px;
-  bottom:2%;
-  animation:walkAcross var(--dur,40s) linear infinite;
 }
 
 /* SOFT SUN behind hero in light mode */
@@ -2239,21 +2177,24 @@ body.scroll-glitching::before{
 </symbol>
 
 <!-- ===== STREETLAMP — side fixture for dark mode ===== -->
-<symbol id="sprite-streetlamp" viewBox="0 0 32 180" preserveAspectRatio="xMinYMax meet">
+<symbol id="sprite-streetlamp" viewBox="0 0 32 420" preserveAspectRatio="xMinYMax meet">
   <!-- base (ground side) -->
-  <rect x="2" y="172" width="14" height="8" fill="#3E2418"/>
-  <rect x="0" y="178" width="18" height="2" fill="#1F1410"/>
-  <rect x="4" y="168" width="10" height="4" fill="#3E2418"/>
-  <rect x="6" y="166" width="6" height="2" fill="#1F1410"/>
-  <!-- vertical pole -->
-  <rect x="8" y="26" width="2" height="140" fill="#1F1410"/>
-  <rect x="9" y="26" width="1" height="140" fill="#0A0A0A"/>
-  <!-- decorative bands -->
-  <rect x="6" y="48" width="6" height="2" fill="#3E2418"/>
-  <rect x="6" y="76" width="6" height="2" fill="#3E2418"/>
-  <rect x="6" y="104" width="6" height="2" fill="#3E2418"/>
-  <rect x="6" y="132" width="6" height="2" fill="#3E2418"/>
+  <rect x="2" y="412" width="14" height="8" fill="#3E2418"/>
+  <rect x="0" y="418" width="18" height="2" fill="#1F1410"/>
+  <rect x="4" y="408" width="10" height="4" fill="#3E2418"/>
+  <rect x="6" y="406" width="6" height="2" fill="#1F1410"/>
+  <!-- long vertical pole -->
+  <rect x="8" y="26" width="2" height="380" fill="#1F1410"/>
+  <rect x="9" y="26" width="1" height="380" fill="#0A0A0A"/>
+  <!-- decorative bands every ~50 units along the pole -->
+  <rect x="6" y="60"  width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="110" width="6" height="2" fill="#3E2418"/>
   <rect x="6" y="160" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="210" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="260" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="310" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="360" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="400" width="6" height="2" fill="#3E2418"/>
   <!-- horizontal arm extending right -->
   <rect x="10" y="22" width="14" height="2" fill="#1F1410"/>
   <rect x="10" y="20" width="2" height="2" fill="#1F1410"/>
@@ -2978,11 +2919,12 @@ body.scroll-glitching::before{
 <div class="scroll-progress"></div>
 
 <!-- ============================================================
-     STATIC DARK-MODE ATMOSPHERE — side paths + ground strip
+     STATIC ATMOSPHERE — ground strip (dark) + nav cat (light)
      ============================================================ -->
-<div class="side-path side-path-left dark-only"></div>
-<div class="side-path side-path-right dark-only"></div>
 <div class="ground-strip dark-only"></div>
+<div class="nav-cat light-only">
+  <svg viewBox="0 0 24 14" xmlns="http://www.w3.org/2000/svg"><use href="#sprite-cat-walk"/></svg>
+</div>
 
 <!-- ============================================================
      AMBIENT LAYERS — day & night
@@ -3910,62 +3852,17 @@ function spawnAmbient(){
   day.innerHTML = '';
   night.innerHTML = '';
 
-  // DAY: walkers + cats
-  for(var i=0; i<4; i++){
-    var w = document.createElement('div');
-    w.className = 'amb-item walker' + (i%2 ? ' reverse' : '');
-    w.style.bottom = (3 + Math.random()*6) + '%';
-    w.style.setProperty('--dur', (24 + Math.random()*16) + 's');
-    w.style.animationDelay = (-Math.random()*30) + 's';
-    w.innerHTML = '<svg viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><use href="#sprite-walker"/></svg>';
-    day.appendChild(w);
-  }
-  for(var i=0; i<2; i++){
-    var c = document.createElement('div');
-    c.className = 'amb-item amb-cat';
-    c.style.bottom = (1 + Math.random()*3) + '%';
-    c.style.setProperty('--dur', (35 + Math.random()*20) + 's');
-    c.style.animationDelay = (-Math.random()*40) + 's';
-    if(i%2) c.style.transform = 'scaleX(-1)';
-    c.innerHTML = '<svg viewBox="0 0 24 14" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><use href="#sprite-cat-walk"/></svg>';
-    day.appendChild(c);
-  }
+  // DAY: nothing dynamic — the single nav-cat lives in static HTML
 
-  // NIGHT: streetlamps left+right + vertical walkers/cats on side paths + fireflies
+  // NIGHT: streetlamps left+right + fireflies
   var lampL = document.createElement('div');
   lampL.className = 'streetlamp streetlamp-left';
-  lampL.innerHTML = '<svg viewBox="0 0 32 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet"><use href="#sprite-streetlamp"/></svg>';
+  lampL.innerHTML = '<svg viewBox="0 0 32 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet"><use href="#sprite-streetlamp"/></svg>';
   night.appendChild(lampL);
   var lampR = document.createElement('div');
   lampR.className = 'streetlamp streetlamp-right';
-  lampR.innerHTML = '<svg viewBox="0 0 32 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet"><use href="#sprite-streetlamp"/></svg>';
+  lampR.innerHTML = '<svg viewBox="0 0 32 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMax meet"><use href="#sprite-streetlamp"/></svg>';
   night.appendChild(lampR);
-  // vertical walkers — 4 total, mix of left/right & up/down
-  for(var i=0; i<4; i++){
-    var w = document.createElement('div');
-    var goesDown = (i % 2 === 0);
-    var onLeft   = (i < 2);
-    w.className  = 'walker-vert ' + (goesDown ? 'down' : 'up');
-    if(onLeft) w.style.left  = (16 + Math.random()*22) + 'px';
-    else       w.style.right = (16 + Math.random()*22) + 'px';
-    w.style.setProperty('--dur', (26 + Math.random()*18) + 's');
-    w.style.animationDelay = (-Math.random()*36) + 's';
-    w.innerHTML = '<svg viewBox="0 0 14 20" xmlns="http://www.w3.org/2000/svg"><use href="#sprite-walker"/></svg>';
-    night.appendChild(w);
-  }
-  // vertical cats — 2 total, one each side
-  for(var i=0; i<2; i++){
-    var c = document.createElement('div');
-    var goesDown = (i === 0);
-    var onLeft   = (i === 1);
-    c.className  = 'amb-cat-vert ' + (goesDown ? 'down' : 'up');
-    if(onLeft) c.style.left  = (18 + Math.random()*16) + 'px';
-    else       c.style.right = (18 + Math.random()*16) + 'px';
-    c.style.setProperty('--dur', (34 + Math.random()*16) + 's');
-    c.style.animationDelay = (-Math.random()*42) + 's';
-    c.innerHTML = '<svg viewBox="0 0 24 14" xmlns="http://www.w3.org/2000/svg"><use href="#sprite-cat-walk"/></svg>';
-    night.appendChild(c);
-  }
   for(var i=0; i<22; i++){
     var f = document.createElement('div');
     f.className = 'amb-item firefly';
