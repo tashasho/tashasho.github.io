@@ -1036,20 +1036,43 @@ footer{
   image-rendering:pixelated;
 }
 
-/* LANTERN — drifts up from bottom */
-.lantern{
-  width:32px; height:42px;
-  bottom:-60px;
-  animation:lanternRise var(--dur,22s) linear infinite, lanternSway 4s ease-in-out infinite;
-  filter:drop-shadow(0 0 10px rgba(255,155,74,0.45));
+/* STREETLAMPS — fixed left & right edges in dark mode */
+.streetlamp{
+  position:absolute; top:60px;
+  width:78px; height:440px;
+  pointer-events:none;
+  z-index:51;
 }
-@keyframes lanternRise{
-  0%{ transform:translateY(0) }
-  100%{ transform:translateY(-120vh) }
+.streetlamp-left{ left:0 }
+.streetlamp-right{ right:0 }
+.streetlamp svg{
+  width:100%; height:100%; display:block;
+  image-rendering:pixelated;
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.6));
 }
-@keyframes lanternSway{
-  0%,100%{ margin-left:0 }
-  50%{ margin-left:30px }
+.streetlamp-right svg{ transform:scaleX(-1); transform-origin:center }
+/* Warm halo glow extending into viewport */
+.streetlamp::after{
+  content:""; position:absolute;
+  top:6px; width:280px; height:280px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,228,138,0.28) 0%, rgba(255,228,138,0.10) 35%, transparent 70%);
+  pointer-events:none;
+  z-index:-1;
+  animation:lampHaloFlicker 4.6s infinite;
+}
+.streetlamp-left::after{ left:30px }
+.streetlamp-right::after{ right:30px }
+@keyframes lampHaloFlicker{
+  0%, 28%, 32%, 55%, 60%, 84%, 86%, 100%{ opacity:1 }
+  30%{ opacity:0.40 }
+  57%{ opacity:0.65 }
+  85%{ opacity:0.25 }
+}
+/* hide streetlamps in light mode (they live inside ambient-night which already hides in light) */
+@media (max-width:540px){
+  .streetlamp{ width:54px; height:300px }
+  .streetlamp::after{ width:180px; height:180px }
 }
 
 /* FIREFLY */
@@ -2130,6 +2153,58 @@ body.scroll-glitching::before{
   </rect>
 </symbol>
 
+<!-- ===== STREETLAMP — side fixture for dark mode ===== -->
+<symbol id="sprite-streetlamp" viewBox="0 0 32 180" preserveAspectRatio="xMinYMin meet">
+  <!-- base (ground side) -->
+  <rect x="2" y="172" width="14" height="8" fill="#3E2418"/>
+  <rect x="0" y="178" width="18" height="2" fill="#1F1410"/>
+  <rect x="4" y="168" width="10" height="4" fill="#3E2418"/>
+  <rect x="6" y="166" width="6" height="2" fill="#1F1410"/>
+  <!-- vertical pole -->
+  <rect x="8" y="26" width="2" height="140" fill="#1F1410"/>
+  <rect x="9" y="26" width="1" height="140" fill="#0A0A0A"/>
+  <!-- decorative bands -->
+  <rect x="6" y="48" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="76" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="104" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="132" width="6" height="2" fill="#3E2418"/>
+  <rect x="6" y="160" width="6" height="2" fill="#3E2418"/>
+  <!-- horizontal arm extending right -->
+  <rect x="10" y="22" width="14" height="2" fill="#1F1410"/>
+  <rect x="10" y="20" width="2" height="2" fill="#1F1410"/>
+  <rect x="22" y="18" width="2" height="2" fill="#1F1410"/>
+  <!-- lamp housing top -->
+  <rect x="20" y="16" width="12" height="2" fill="#1F1410"/>
+  <rect x="22" y="14" width="8" height="2" fill="#1F1410"/>
+  <!-- lamp housing sides -->
+  <rect x="18" y="18" width="2" height="20" fill="#1F1410"/>
+  <rect x="30" y="18" width="2" height="20" fill="#1F1410"/>
+  <!-- lamp housing bottom -->
+  <rect x="20" y="36" width="12" height="2" fill="#1F1410"/>
+  <rect x="22" y="38" width="8" height="2" fill="#1F1410"/>
+  <!-- bulb glow (animated flicker) -->
+  <rect x="20" y="18" width="12" height="18" fill="#FFE48A">
+    <animate attributeName="opacity"
+      values="1;1;0.35;1;1;0.65;1;1;0.25;1"
+      keyTimes="0;0.28;0.30;0.32;0.55;0.57;0.60;0.84;0.86;1"
+      dur="4.6s" repeatCount="indefinite"/>
+  </rect>
+  <!-- inner brightest core -->
+  <rect x="22" y="20" width="8" height="14" fill="#FFF3D6">
+    <animate attributeName="opacity"
+      values="1;1;0.20;1;1;0.50;1;1;0.15;1"
+      keyTimes="0;0.28;0.30;0.32;0.55;0.57;0.60;0.84;0.86;1"
+      dur="4.6s" repeatCount="indefinite"/>
+  </rect>
+  <!-- filament glint -->
+  <rect x="24" y="24" width="4" height="2" fill="#FFFFFF">
+    <animate attributeName="opacity"
+      values="1;1;0.10;1;1;0.40;1;1;0.05;1"
+      keyTimes="0;0.28;0.30;0.32;0.55;0.57;0.60;0.84;0.86;1"
+      dur="4.6s" repeatCount="indefinite"/>
+  </rect>
+</symbol>
+
 <!-- ===== PAPER LANTERN ===== -->
 <symbol id="sprite-lantern" viewBox="0 0 16 22">
   <!-- top string -->
@@ -2889,7 +2964,7 @@ body.scroll-glitching::before{
       <div class="hero-cta-row">
         <a class="sticker lime" href="https://drive.google.com/file/d/1P2zA61L3x4MDNJ6n5Sx2zADL1SGQ1kHj/view?usp=sharing" target="_blank">▼ Download CV</a>
         <a class="sticker pink" href="mailto:tashashoms@gmail.com">@ Email</a>
-        <a class="sticker gold" href="#CALENDLY_LINK">▣ Book a Chat</a>
+        <a class="sticker gold" href="https://calendly.com/tashashoms/intro-call">▣ Book a Chat</a>
         <a class="sticker ghost" href="https://linkedin.com/in/bhumikamarmat">in/ LinkedIn</a>
         <a class="sticker ghost" href="https://github.com/tashasho">gh/ GitHub</a>
         <a class="sticker ghost" href="https://substack.com/@bhumikamarmat">✎ Substack</a>
@@ -3398,11 +3473,13 @@ body.scroll-glitching::before{
 
     <!-- FREEFORM ASIDES — not blocks, just inline notes -->
     <div class="aside-flow reveal">
-      <p class="aside-line"><span class="aside-tag" style="color:var(--pink)">discourse →</span> Silver Contingent, ACWG Debate (G20). Winner IIT KGP Intras. Broke at LSRPD &amp; DTU PD.</p>
-      <p class="aside-line"><span class="aside-tag" style="color:var(--lime)">founding →</span> Founded the Ujjain chapter of <em>Period</em>, a global menstrual-health org.</p>
+      <p class="aside-line"><span class="aside-tag" style="color:#B26FFF">scholar →</span> <em>NTSE National Scholar 2020</em> — top 0.1% of 1M+ candidates · NCERT Government Scholarship · <em>INSPIRE Fellowship</em> candidate (Govt. of India, top 1% of national exams).</p>
+      <p class="aside-line"><span class="aside-tag" style="color:#7DD3FC">case-comps →</span> National Runner-Up, <em>MnAnalyse</em> M&amp;A Case Competition (IIT Guwahati, LBO — Zomato × Blinkit) · National Finalist, <em>Insight Masters</em> Business Analytics (ISB Hyderabad) · National Finalist, <em>AWL Resolve</em> (Adani Wilmar × IIM Ahmedabad).</p>
+      <p class="aside-line"><span class="aside-tag" style="color:#FF8AB4">discourse →</span> Silver Contingent, ACWG Debate (G20). Winner IIT KGP Intras. Broke at LSRPD &amp; DTU PD. Best Debater, Sahodaya Regional · Public Speaking Recognition.</p>
+      <p class="aside-line"><span class="aside-tag" style="color:var(--lime)">founding →</span> Founded the Ujjain chapter of <em>Period</em>, a global menstrual-health org. Volunteer, <em>Robinhood Army</em> &amp; <em>Robinhood Academy</em>.</p>
       <p class="aside-line"><span class="aside-tag" style="color:var(--gold)">writing →</span> Youngest journalist at the <em>Free Press Journal</em>.</p>
-      <p class="aside-line"><span class="aside-tag" style="color:var(--orange)">hardware →</span> Silver medal, Aavishkar International Robotics Championship.</p>
-      <p class="aside-line"><span class="aside-tag" style="color:var(--blue)">music →</span> 2× Gold Anuvrat National Singing · Gold Anuvrat State Art · Merit Gandharva Mahavidyalaya · currently strumming ukulele 🎵</p>
+      <p class="aside-line"><span class="aside-tag" style="color:var(--orange)">hardware →</span> Silver, Aavishkar International Robotics Championship · UCMAS National Merit.</p>
+      <p class="aside-line"><span class="aside-tag" style="color:#80B6F5">music →</span> 2× Gold Anuvrat National Singing · Gold Anuvrat State Art · Merit Gandharva Mahavidyalaya · currently strumming ukulele 🎵</p>
     </div>
   </div>
 </section>
@@ -3445,7 +3522,7 @@ body.scroll-glitching::before{
           <a class="contact-link" href="https://linkedin.com/in/bhumikamarmat">linkedin.com/in/bhumikamarmat <b>LINKEDIN</b></a>
           <a class="contact-link" href="https://github.com/tashasho">github.com/tashasho <b>GITHUB</b></a>
           <a class="contact-link" href="https://substack.com/@bhumikamarmat">substack.com/@bhumikamarmat <b>SUBSTACK</b></a>
-          <a class="contact-link" href="#CALENDLY_LINK">Book a Chat <b>CAL</b></a>
+          <a class="contact-link" href="https://calendly.com/tashashoms/intro-call">Book a Chat <b>CAL</b></a>
         </div>
       </div>
     </div>
@@ -3762,16 +3839,15 @@ function spawnAmbient(){
     day.appendChild(c);
   }
 
-  // NIGHT: lanterns rising + fireflies twinkling
-  for(var i=0; i<6; i++){
-    var l = document.createElement('div');
-    l.className = 'amb-item lantern';
-    l.style.left = (Math.random()*94 + 2) + '%';
-    l.style.setProperty('--dur', (18 + Math.random()*14) + 's');
-    l.style.animationDelay = (-Math.random()*28) + 's';
-    l.innerHTML = '<svg viewBox="0 0 16 22" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><use href="#sprite-lantern"/></svg>';
-    night.appendChild(l);
-  }
+  // NIGHT: streetlamps left+right + fireflies twinkling
+  var lampL = document.createElement('div');
+  lampL.className = 'streetlamp streetlamp-left';
+  lampL.innerHTML = '<svg viewBox="0 0 32 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"><use href="#sprite-streetlamp"/></svg>';
+  night.appendChild(lampL);
+  var lampR = document.createElement('div');
+  lampR.className = 'streetlamp streetlamp-right';
+  lampR.innerHTML = '<svg viewBox="0 0 32 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"><use href="#sprite-streetlamp"/></svg>';
+  night.appendChild(lampR);
   for(var i=0; i<22; i++){
     var f = document.createElement('div');
     f.className = 'amb-item firefly';
