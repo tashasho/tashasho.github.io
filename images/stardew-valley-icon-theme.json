@@ -1,0 +1,489 @@
+{
+    "iconDefinitions": {
+        "_file_default": {
+            "iconPath": "./Starfruit.png"
+        },
+        "_folder_default": {
+            "iconPath": "./Bin_Closed.png"
+        },
+        "_folder_expanded_default": {
+            "iconPath": "./Bin_Opened.png"
+        },
+        "_root_folder": {
+            "iconPath": "./Bin_Closed.png"
+        },
+        "_root_folder_expanded": {
+            "iconPath": "./Bin_Opened.png"
+        },
+        "_javascript_file": {
+            "iconPath": "./Starfruit.png"
+        },
+        "_typescript_file": {
+            "iconPath": "./Sweet_Pea.png"
+        },
+        "_tsx_file": {
+            "iconPath": "./Bok_Choy.png"
+        },
+        "_jsx_file": {
+            "iconPath": "./Sunflower.png"
+        },
+        "_react_file": {
+            "iconPath": "./Cat_3.png"
+        },
+        "_vue_file": {
+            "iconPath": "./Stardrop.png"
+        },
+        "_angular_file": {
+            "iconPath": "./Prismatic_Shard.png"
+        },
+        "_html_file": {
+            "iconPath": "./Red_Mushroom.png"
+        },
+        "_css_file": {
+            "iconPath": "./Strawberry.png"
+        },
+        "_sass_file": {
+            "iconPath": "./Sweet_Pea.png"
+        },
+        "_less_file": {
+            "iconPath": "./Grape.png"
+        },
+        "_stylus_file": {
+            "iconPath": "./Prismatic_Shard.png"
+        },
+        "_json_file": {
+            "iconPath": "./Magic_Ink.png"
+        },
+        "_markdown_file": {
+            "iconPath": "./Duck_Feather.png"
+        },
+        "_text_file": {
+            "iconPath": "./Secret_Note.png"
+        },
+        "_node_package": {
+            "iconPath": "./Grape.png"
+        },
+        "_node_package.lock": {
+            "iconPath": "./Golden_Key.png"
+        },
+        "_yarn_lock": {
+            "iconPath": "./Cat.png"
+        },
+        "_typescript_config": {
+            "iconPath": "./Tulip.png"
+        },
+        "_typescript_app_config": {
+            "iconPath": "./Salmonberry.png"
+        },
+        "_README_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_CHANGELOG_file": {
+            "iconPath": "./Pierre's_Missing_Stocklist.png"
+        },
+        "_ignore_file": {
+            "iconPath": "./Warp_Totem_Beach.png"
+        },
+        "_ignore_git_file": {
+            "iconPath": "./Melon.png"
+        },
+        "_ignore_eslint_file": {
+            "iconPath": "./Warp_Totem_Farm.png"
+        },
+        "_license_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_test_file": {
+            "iconPath": "./Magnifying_Glass.png"
+        },
+        "_png_file": {
+            "iconPath": "./StatusWindFall.png"
+        },
+        "_jpeg_file": {
+            "iconPath": "./StatusWindSpring.png"
+        },
+        "_svg_file": {
+            "iconPath": "./StatusWedding.png"
+        },
+        "_gif_file": {
+            "iconPath": "./StatusStorm.png"
+        },
+        "_ico_file": {
+            "iconPath": "./StatusWedding.png"
+        },
+        "_map_file": {
+            "iconPath": "./Golden_Relic.png"
+        },
+        "_ttf_file": {
+            "iconPath": "./Mail.png"
+        },
+        "_toml_file": {
+            "iconPath": "./Rare_Disc.png"
+        },
+        "_prettier_file": {
+            "iconPath": "./Stardrop.png"
+        },
+        "_eslint_file": {
+            "iconPath": "./Spangle.png"
+        },
+        "_lock_file": {
+            "iconPath": "./Rusty_Key.png"
+        },
+        "_CONTRIBUTING_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_config_file": {
+            "iconPath": "./Starfruit.png"
+        },
+        "_sh_file": {
+            "iconPath": "./Cat_3.png"
+        },
+        "_AUTHORS_file": {
+            "iconPath": "./Coffee.png"
+        },
+        "_php_file": {
+            "iconPath": "./Parsnip.png"
+        },
+        "_python_file": {
+            "iconPath": "./Leek.png"
+        },
+        "_ruby_file": {
+            "iconPath": "./Strawberry.png"
+        },
+        "_java_file": {
+            "iconPath": "./Coffee.png"
+        },
+        "_csharp_file": {
+            "iconPath": "./Diamond.png"
+        },
+        "_cpp_file": {
+            "iconPath": "./Quartz.png"
+        },
+        "_c_file": {
+            "iconPath": "./Quartz.png"
+        },
+        "_go_file": {
+            "iconPath": "./Bok_Choy.png"
+        },
+        "_rust_file": {
+            "iconPath": "./Rusty_Key.png"
+        },
+        "_swift_file": {
+            "iconPath": "./Spangle.png"
+        },
+        "_kotlin_file": {
+            "iconPath": "./Diamond.png"
+        },
+        "_scala_file": {
+            "iconPath": "./Prismatic_Shard.png"
+        },
+        "_docker_file": {
+            "iconPath": "./Carrot.png"
+        },
+        "_kubernetes_file": {
+            "iconPath": "./Junimo_Hut.png"
+        },
+        "_terraform_file": {
+            "iconPath": "./Golden_Relic.png"
+        },
+        "_xml_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_yaml_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_ini_file": {
+            "iconPath": "./Secret_Note.png"
+        },
+        "_env_file": {
+            "iconPath": "./Secret_Note.png"
+        },
+        "_pdf_file": {
+            "iconPath": "./Dwarf_Gadget.png"
+        },
+        "_zip_file": {
+            "iconPath": "./Melon.png"
+        },
+        "_archive_file": {
+            "iconPath": "./Garlic.png"
+        },
+        "_audio_file": {
+            "iconPath": "./Spangle.png"
+        },
+        "_video_file": {
+            "iconPath": "./Spangle.png"
+        },
+        "_binary_file": {
+            "iconPath": "./Trash_Can_Iridium.png"
+        },
+        "_sql_file": {
+            "iconPath": "./Quartz.png"
+        },
+        "_database_file": {
+            "iconPath": "./Golden_Relic.png"
+        },
+        "_excel_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_word_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_powerpoint_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_certificate_file": {
+            "iconPath": "./Golden_Key.png"
+        },
+        "_key_file": {
+            "iconPath": "./Key.png"
+        },
+        "_font_file": {
+            "iconPath": "./Mail.png"
+        },
+        "_log_file": {
+            "iconPath": "./Wood.png"
+        },
+        "_batch_file": {
+            "iconPath": "./Dwarf_Gadget.png"
+        },
+        "_powershell_file": {
+            "iconPath": "./Dwarf_Gadget.png"
+        },
+        "_webpack_file": {
+            "iconPath": "./Pancakes.png"
+        },
+        "_babel_file": {
+            "iconPath": "./Lost_Book.png"
+        },
+        "_npm_file": {
+            "iconPath": "./Coffee.png"
+        },
+        "_yarn_file": {
+            "iconPath": "./Cat.png"
+        },
+        "_image_file": {
+            "iconPath": "./Summer_Seeds.png"
+        },
+        "_FOLDER_STRUCTURE_file": {
+            "iconPath": "./Apple.png"
+        },
+        "_auth_file": {
+            "iconPath": "./Key.png"
+        },
+        "_server_file": {
+            "iconPath": "./Salmonberry.png"
+        }
+    },
+    "rootFolder": "_root_folder",
+    "rootFolderExpanded": "_root_folder_expanded",
+    "file": "_file_default",
+    "folder": "_folder_default",
+    "folderExpanded": "_folder_expanded_default",
+    "folderNames": {},
+    "fileNames": {
+        "package.json": "_node_package",
+        "package-lock.json": "_node_package.lock",
+        "pnpm-lock.json": "_node_package.lock",
+        "package-lock.yaml": "_node_package.lock",
+        "pnpm-lock.yaml": "_node_package.lock",
+        "package-lock.yml": "_node_package.lock",
+        "pnpm-lock.yml": "_node_package.lock",
+        "yarn.lock": "_yarn_lock",
+        ".package-lock.json": "_node_package.lock",
+        "tsconfig.json": "_typescript_config",
+        "tsconfig.app.json": "_typescript_app_config",
+        "FOLDER_STRUCTURE.md": "_FOLDER_STRUCTURE_file",
+        "README.md": "_README_file",
+        "README.txt": "_README_file",
+        "readme.md": "_README_file",
+        "CHANGELOG.md": "_CHANGELOG_file",
+        "CHANGELOG.txt": "_CHANGELOG_file",
+        "changelog.md": "_CHANGELOG_file",
+        "LICENSE": "_license_file",
+        "LICENSE.md": "_license_file",
+        "LICENSE.txt": "_license_file",
+        "license": "_license_file",
+        "licence": "_license_file",
+        "CONTRIBUTING": "_CONTRIBUTING_file",
+        "CONTRIBUTING.md": "_CONTRIBUTING_file",
+        "CONTRIBUTING.txt": "_CONTRIBUTING_file",
+        "contributing.md": "_CONTRIBUTING_file",
+        "AUTHORS": "_AUTHORS_file",
+        "AUTHORS.md": "_AUTHORS_file",
+        "AUTHORS.txt": "_AUTHORS_file",
+        "authors.md": "_AUTHORS_file",
+        ".gitignore": "_ignore_git_file",
+        ".eslintignore": "_ignore_eslint_file",
+        ".prettierignore": "_ignore_file",
+        ".dockerignore": "_ignore_file",
+        ".vscodeignore": "_ignore_file",
+        ".prettierrc": "_prettier_file",
+        ".prettierrc.js": "_prettier_file",
+        ".prettierrc.json": "_prettier_file",
+        ".prettierrc.yaml": "_prettier_file",
+        ".prettierrc.yml": "_prettier_file",
+        "prettier.config.js": "_prettier_file",
+        ".eslintrc": "_eslint_file",
+        ".eslintrc.js": "_eslint_file",
+        ".eslintrc.json": "_eslint_file",
+        ".eslintrc.yaml": "_eslint_file",
+        ".eslintrc.yml": "_eslint_file",
+        "eslint.config.js": "_eslint_file",
+        "dockerfile": "_docker_file",
+        "Dockerfile": "_docker_file",
+        "docker-compose.yml": "_docker_file",
+        "docker-compose.yaml": "_docker_file",
+        ".env": "_env_file",
+        ".env.local": "_env_file",
+        ".env.development": "_env_file",
+        ".env.production": "_env_file",
+        ".env.test": "_env_file",
+        "config.json": "_config_file",
+        "config.js": "_config_file",
+        "config.ts": "_config_file",
+        "webpack.config.js": "_webpack_file",
+        "webpack.config.ts": "_webpack_file",
+        "rollup.config.js": "_config_file",
+        "rollup.config.ts": "_config_file",
+        "vite.config.js": "_config_file",
+        "vite.config.ts": "_config_file",
+        "babel.config.js": "_babel_file",
+        ".babelrc": "_babel_file",
+        ".babelrc.js": "_babel_file",
+        "jest.config.js": "_test_file",
+        "jest.config.ts": "_test_file",
+        "vitest.config.js": "_test_file",
+        "vitest.config.ts": "_test_file",
+        "auth.js": "_auth_file",
+        "server.js": "_server_file"
+    },
+    "fileExtensions": {
+        "html": "_html_file",
+        "htm": "_html_file",
+        "css": "_css_file",
+        "scss": "_sass_file",
+        "sass": "_sass_file",
+        "less": "_less_file",
+        "styl": "_stylus_file",
+        "stylus": "_stylus_file",
+        "jsx": "_jsx_file",
+        "tsx": "_tsx_file",
+        "js": "_javascript_file",
+        "mjs": "_javascript_file",
+        "cjs": "_javascript_file",
+        "ts": "_typescript_file",
+        "mts": "_typescript_file",
+        "cts": "_typescript_file",
+        "vue": "_vue_file",
+        "svelte": "_vue_file",
+        "md": "_markdown_file",
+        "mdx": "_markdown_file",
+        "txt": "_text_file",
+        "json": "_json_file",
+        "json5": "_json_file",
+        "jsonc": "_json_file",
+        "xml": "_xml_file",
+        "yaml": "_yaml_file",
+        "yml": "_yaml_file",
+        "toml": "_toml_file",
+        "ini": "_ini_file",
+        "env": "_env_file",
+        "gitignore": "_ignore_git_file",
+        "vscodeignore": "_ignore_file",
+        "prettierignore": "_ignore_file",
+        "eslintignore": "_ignore_eslint_file",
+        "dockerignore": "_ignore_file",
+        "prettierrc": "_prettier_file",
+        "eslintrc": "_eslint_file",
+        "png": "_png_file",
+        "jpg": "_jpeg_file",
+        "jpeg": "_jpeg_file",
+        "gif": "_gif_file",
+        "svg": "_svg_file",
+        "webp": "_image_file",
+        "avif": "_image_file",
+        "ico": "_ico_file",
+        "ttf": "_ttf_file",
+        "otf": "_font_file",
+        "woff": "_font_file",
+        "woff2": "_font_file",
+        "eot": "_font_file",
+        "map": "_map_file",
+        "lock": "_lock_file",
+        "config": "_config_file",
+        "sh": "_sh_file",
+        "bash": "_sh_file",
+        "zsh": "_sh_file",
+        "fish": "_sh_file",
+        "ps1": "_powershell_file",
+        "bat": "_batch_file",
+        "cmd": "_batch_file",
+        "php": "_php_file",
+        "py": "_python_file",
+        "pyw": "_python_file",
+        "pyc": "_python_file",
+        "pyo": "_python_file",
+        "rb": "_ruby_file",
+        "rbw": "_ruby_file",
+        "java": "_java_file",
+        "class": "_java_file",
+        "jar": "_java_file",
+        "cs": "_csharp_file",
+        "cpp": "_cpp_file",
+        "cxx": "_cpp_file",
+        "cc": "_cpp_file",
+        "c": "_c_file",
+        "h": "_c_file",
+        "hpp": "_cpp_file",
+        "go": "_go_file",
+        "rs": "_rust_file",
+        "swift": "_swift_file",
+        "kt": "_kotlin_file",
+        "kts": "_kotlin_file",
+        "scala": "_scala_file",
+        "sql": "_sql_file",
+        "db": "_database_file",
+        "sqlite": "_database_file",
+        "sqlite3": "_database_file",
+        "pdf": "_pdf_file",
+        "doc": "_word_file",
+        "docx": "_word_file",
+        "xls": "_excel_file",
+        "xlsx": "_excel_file",
+        "ppt": "_powerpoint_file",
+        "pptx": "_powerpoint_file",
+        "zip": "_zip_file",
+        "rar": "_archive_file",
+        "7z": "_archive_file",
+        "tar": "_archive_file",
+        "gz": "_archive_file",
+        "bz2": "_archive_file",
+        "xz": "_archive_file",
+        "mp3": "_audio_file",
+        "wav": "_audio_file",
+        "flac": "_audio_file",
+        "ogg": "_audio_file",
+        "m4a": "_audio_file",
+        "mp4": "_video_file",
+        "avi": "_video_file",
+        "mov": "_video_file",
+        "wmv": "_video_file",
+        "mkv": "_video_file",
+        "webm": "_video_file",
+        "exe": "_binary_file",
+        "dll": "_binary_file",
+        "so": "_binary_file",
+        "dylib": "_binary_file",
+        "app": "_binary_file",
+        "deb": "_binary_file",
+        "rpm": "_binary_file",
+        "crt": "_certificate_file",
+        "pem": "_certificate_file",
+        "key": "_key_file",
+        "pub": "_key_file",
+        "p12": "_certificate_file",
+        "pfx": "_certificate_file",
+        "log": "_log_file",
+        "http": "_php_file"
+    }
+}

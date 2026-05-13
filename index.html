@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Bhumika Marmat — Math & CS at IIT Kharagpur. I build the tools VCs wish they had."/>
+  <meta name="author" content="Bhumika Marmat"/>
+  <meta name="keywords" content="Bhumika Marmat, IIT Kharagpur, Venture Capital, AI, Deep Tech, Portfolio"/>
+  <meta property="og:title" content="Bhumika Marmat — Portfolio"/>
+  <meta property="og:description" content="Math & CS at IIT Kharagpur. I build the tools VCs wish they had."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://tashasho.github.io"/>
+  <meta property="og:image" content="https://tashasho.github.io/images/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Bhumika Marmat — Portfolio"/>
+  <meta name="twitter:description" content="Math & CS at IIT Kharagpur. I build the tools VCs wish they had."/>
+  <title>Bhumika Marmat</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2B50;</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ======================================
+   CSS VARIABLES & RESET
+   ====================================== */
+:root {
+  --bg: #2a1f3d;
+  --bg2: #3d2e5c;
+  --bg-warm: #4a3728;
+  --panel: #f5e6c8;
+  --panel2: #e8d5a3;
+  --panel3: #d4c49a;
+  --text: #3d2b1f;
+  --text-light: #f5e6c8;
+  --accent: #e85d75;
+  --accent2: #ff9b4a;
+  --green: #5a8f4a;
+  --blue: #4a7fb5;
+  --gold: #f5c842;
+  --pixel-shadow: #1a1028;
+  --pixel-font: 'Press Start 2P', monospace;
+  --retro-font: 'VT323', monospace;
+  --body-font: 'DM Sans', sans-serif;
+  --max: 1100px;
+  --gutter: 40px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text-light);
+  font-family: var(--retro-font);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect x='4' y='0' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='0' y='4' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%23fff'/%3E%3Crect x='8' y='4' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='4' y='8' width='4' height='4' fill='%23fff'/%3E%3Crect x='8' y='8' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='12' y='8' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='8' y='12' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='12' y='12' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='16' y='12' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='12' y='16' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='16' y='16' width='4' height='4' fill='%23f5c842'/%3E%3Crect x='20' y='16' width='4' height='4' fill='%23f5c842'/%3E%3C/svg%3E") 4 4, auto;
+}
+a { cursor: inherit; }
+::selection { background: rgba(232,93,117,0.4); color: #fff; }
+img { image-rendering: pixelated; }
+
+/* ======================================
+   SCROLL PROGRESS BAR
+   ====================================== */
+.scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 4px; z-index: 200;
+  transform-origin: left; transform: scaleX(0);
+  background: linear-gradient(90deg, var(--gold), var(--accent2), var(--accent));
+  width: 100%;
+  image-rendering: pixelated;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+/* ======================================
+   STARRY SKY BACKGROUND
+   ====================================== */
+.starry-sky {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, #1a1028 0%, #2a1f3d 40%, #3d2e5c 70%, #2a1f3d 100%);
+}
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--dur) ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: var(--o1); }
+  50% { opacity: var(--o2); }
+}
+
+/* ======================================
+   FLOATING STARDEW ICONS
+   ====================================== */
+.floating-icon {
+  position: absolute;
+  z-index: 3;
+  pointer-events: all;
+  cursor: grab;
+  transition: filter 0.3s;
+  animation: iconBob var(--bob-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--bob-delay, 0s);
+  image-rendering: pixelated;
+}
+.floating-icon:hover {
+  filter: brightness(1.3) drop-shadow(0 0 8px var(--gold));
+}
+.floating-icon.dragging {
+  cursor: grabbing;
+  animation: none;
+  filter: brightness(1.4) drop-shadow(0 0 12px var(--gold));
+}
+@keyframes iconBob {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(var(--bob-y, -12px)) rotate(calc(var(--rot, 0deg) + 3deg)); }
+}
+
+/* ======================================
+   PIXEL BORDER MIXIN
+   ====================================== */
+.pixel-border {
+  box-shadow:
+    -4px 0 0 0 var(--border-color, #8b6914),
+    4px 0 0 0 var(--border-color, #8b6914),
+    0 -4px 0 0 var(--border-color, #8b6914),
+    0 4px 0 0 var(--border-color, #8b6914),
+    -4px -4px 0 0 var(--border-color, #8b6914),
+    4px -4px 0 0 var(--border-color, #8b6914),
+    -4px 4px 0 0 var(--border-color, #8b6914),
+    4px 4px 0 0 var(--border-color, #8b6914),
+    -8px 0 0 0 var(--border-outer, #5c4a1e),
+    8px 0 0 0 var(--border-outer, #5c4a1e),
+    0 -8px 0 0 var(--border-outer, #5c4a1e),
+    0 8px 0 0 var(--border-outer, #5c4a1e);
+}
+.pixel-border-thin {
+  box-shadow:
+    -2px 0 0 0 var(--border-color, #8b6914),
+    2px 0 0 0 var(--border-color, #8b6914),
+    0 -2px 0 0 var(--border-color, #8b6914),
+    0 2px 0 0 var(--border-color, #8b6914);
+}
+
+/* ======================================
+   NAV
+   ====================================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(26,16,40,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 3px solid #8b6914;
+  transition: transform 0.3s ease;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 0 var(--gutter); height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-name {
+  font-family: var(--pixel-font); font-size: 0.55rem;
+  color: var(--gold); text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.nav-name:hover { color: var(--accent2); }
+.nav-links { display: flex; gap: 20px; list-style: none; }
+.nav-links a {
+  font-family: var(--retro-font); font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--panel2); text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 2px; background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 24px; height: 18px; position: relative; z-index: 110;
+}
+.nav-toggle span {
+  display: block; width: 100%; height: 2px;
+  background: var(--gold); position: absolute; left: 0;
+  transition: all 0.3s ease;
+}
+.nav-toggle span:nth-child(1) { top: 0; }
+.nav-toggle span:nth-child(2) { top: 8px; }
+.nav-toggle span:nth-child(3) { top: 16px; }
+.nav-toggle.open span:nth-child(1) { top: 8px; transform: rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { top: 8px; transform: rotate(-45deg); }
+
+/* ======================================
+   LAYOUT
+   ====================================== */
+.page {
+  max-width: var(--max); margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative; z-index: 2;
+}
+
+/* ======================================
+   HERO — PLAYER PROFILE CARD
+   ====================================== */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 100px 20px 60px;
+  position: relative; z-index: 2;
+}
+.player-card {
+  background: var(--panel);
+  color: var(--text);
+  max-width: 680px; width: 100%;
+  padding: 48px 44px;
+  position: relative;
+  --border-color: #8b6914;
+  --border-outer: #5c4a1e;
+  border: 4px solid #8b6914;
+  outline: 4px solid #5c4a1e;
+  outline-offset: 0px;
+}
+.player-card::before {
+  content: '';
+  position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 2px solid rgba(139,105,20,0.3);
+  pointer-events: none;
+}
+.player-card-header {
+  text-align: center; margin-bottom: 28px;
+}
+.player-card-header .section-icon {
+  width: 48px; height: 48px; margin: 0 auto 12px;
+}
+.player-name {
+  font-family: var(--pixel-font);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  color: var(--text);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.player-label {
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  color: #8b6914;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-typing {
+  font-family: var(--retro-font);
+  font-size: 1.5rem;
+  color: var(--accent);
+  text-align: center;
+  min-height: 2em;
+  margin-bottom: 20px;
+}
+.cursor-blink {
+  display: inline-block; width: 10px; height: 1.1em;
+  background: var(--accent);
+  margin-left: 2px; vertical-align: text-bottom;
+  animation: blink 0.6s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-bio {
+  font-family: var(--body-font);
+  font-size: 0.95rem;
+  color: #5c4a3a;
+  line-height: 1.75;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.hero-bio strong { color: var(--text); font-weight: 500; }
+
+/* Stat bars */
+.stat-bars { margin-bottom: 28px; }
+.stat-bar-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+  font-family: var(--retro-font);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.stat-bar-label {
+  width: 110px; text-align: right;
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  letter-spacing: 0.05em;
+  color: #8b6914;
+}
+.stat-bar-track {
+  flex: 1; height: 16px;
+  background: var(--panel2);
+  border: 2px solid #8b6914;
+  position: relative;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #7abf5c);
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  image-rendering: pixelated;
+  /* pixel dither pattern */
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 3px,
+    rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px
+  );
+}
+.stat-bar-fill.accent { background-color: var(--accent); background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px); }
+.stat-bar-fill.gold { background-color: var(--gold); background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px); }
+.stat-bar-fill.blue { background-color: var(--blue); background-image: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px); }
+.stat-bar-val {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: var(--text);
+  min-width: 60px;
+}
+.pixel-heart { color: var(--accent); margin-right: 2px; }
+
+/* CTA row */
+.cta-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.cta {
+  font-family: var(--pixel-font); font-size: 0.42rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 10px 16px; text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid #8b6914;
+  color: var(--text);
+  background: var(--panel2);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.cta:hover {
+  background: var(--gold);
+  color: var(--text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #8b6914;
+}
+.cta-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: #b8344e;
+}
+.cta-primary:hover { background: #d04060; color: #fff; box-shadow: 0 4px 0 #b8344e; }
+
+/* ======================================
+   SKILLS INVENTORY BAR
+   ====================================== */
+.inventory-bar {
+  position: relative; z-index: 2;
+  background: linear-gradient(180deg, #5c4a1e, #4a3728, #3d2b1f);
+  border-top: 3px solid #8b6914;
+  border-bottom: 3px solid #8b6914;
+  padding: 14px 0;
+  overflow: hidden;
+}
+.marquee {
+  display: flex; gap: 32px;
+  animation: marqueeScroll 40s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  display: flex; align-items: center; gap: 8px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.marquee-item img {
+  width: 20px; height: 20px;
+}
+.marquee-item span {
+  font-family: var(--retro-font);
+  font-size: 1.1rem;
+  color: var(--panel);
+  letter-spacing: 0.05em;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ======================================
+   SECTION STYLES
+   ====================================== */
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+.section-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 12px;
+}
+.section-icon {
+  width: 32px; height: 32px;
+  image-rendering: pixelated;
+}
+.section-label {
+  font-family: var(--pixel-font);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.section-title {
+  font-family: var(--pixel-font);
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 36px;
+}
+.section-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* Section gradient overlays */
+.section-gradient {
+  position: absolute; left: 0; right: 0;
+  height: 120px; pointer-events: none; z-index: -1;
+}
+.section-gradient-top { top: -60px; background: linear-gradient(180deg, transparent, rgba(42,31,61,0.5)); }
+.section-gradient-bottom { bottom: -60px; background: linear-gradient(0deg, transparent, rgba(42,31,61,0.5)); }
+
+/* ======================================
+   EXPERIENCE — QUEST LOG
+   ====================================== */
+.quest-log {
+  display: flex; flex-direction: column; gap: 36px;
+}
+.quest-card {
+  background: var(--panel);
+  color: var(--text);
+  border: 3px solid #8b6914;
+  padding: 28px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quest-card::before {
+  content: '';
+  position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(139,105,20,0.25);
+  pointer-events: none;
+}
+.quest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 0 rgba(26,16,40,0.4);
+}
+.quest-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--pixel-font);
+  font-size: 0.35rem;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  background: rgba(90,143,74,0.15);
+  padding: 4px 10px;
+  border: 1px solid rgba(90,143,74,0.3);
+}
+.quest-firm {
+  font-family: var(--pixel-font);
+  font-size: 0.55rem;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+.quest-firm a {
+  color: var(--text); text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+}
+.quest-firm a:hover { color: var(--accent); }
+.quest-meta {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: #8b6914;
+  margin-bottom: 12px;
+}
+.quest-rewards-label {
+  font-family: var(--pixel-font);
+  font-size: 0.35rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  margin-top: 14px;
+}
+.quest-rewards {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.quest-rewards li {
+  font-family: var(--body-font);
+  font-size: 0.88rem;
+  color: #5c4a3a;
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+}
+.quest-rewards li::before {
+  content: '\2605';
+  position: absolute; left: 0;
+  color: var(--gold);
+}
+.quest-rewards a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid rgba(232,93,117,0.3);
+}
+.quest-rewards a:hover { border-color: var(--accent); }
+.quest-rewards strong { color: var(--text); font-weight: 500; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tag {
+  font-family: var(--pixel-font); font-size: 0.32rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--blue);
+  padding: 4px 8px;
+  border: 1px solid rgba(74,127,181,0.4);
+  background: rgba(74,127,181,0.1);
+}
+
+/* ======================================
+   TOOLS — CRAFTED ITEMS
+   ====================================== */
+.tab-bar {
+  display: flex; gap: 0;
+  margin-bottom: 28px;
+  border: 2px solid #8b6914;
+  width: fit-content;
+}
+.tab-btn {
+  font-family: var(--pixel-font); font-size: 0.38rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 10px 18px; border: none;
+  background: var(--bg-warm); color: var(--panel2);
+  cursor: pointer; transition: all 0.2s;
+  border-right: 2px solid #8b6914;
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn:hover { color: var(--gold); background: #5c4a1e; }
+.tab-btn.active {
+  background: var(--gold);
+  color: var(--text);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.tool-card {
+  background: var(--panel);
+  color: var(--text);
+  border: 3px solid #8b6914;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.tool-card::before {
+  content: '';
+  position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border: 1px solid rgba(139,105,20,0.2);
+  pointer-events: none;
+}
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 0 rgba(26,16,40,0.4), 0 0 20px rgba(245,200,66,0.15);
+  border-color: var(--gold);
+}
+.tool-card-icon {
+  width: 36px; height: 36px;
+  image-rendering: pixelated;
+  margin-bottom: 10px;
+}
+.tool-top {
+  display: flex; justify-content: space-between;
+  align-items: baseline; gap: 8px; margin-bottom: 8px;
+}
+.tool-name {
+  font-family: var(--pixel-font);
+  font-size: 0.42rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+.tool-num {
+  font-family: var(--retro-font);
+  font-size: 0.9rem;
+  color: #8b6914;
+}
+.tool-desc {
+  font-family: var(--body-font);
+  font-size: 0.85rem;
+  color: #5c4a3a;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.tool-impact {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: var(--green);
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(90,143,74,0.12);
+  border-left: 3px solid var(--green);
+  margin-bottom: 10px;
+}
+.tool-links { display: flex; gap: 14px; flex-wrap: wrap; }
+.tool-link {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.tool-link:hover { color: #b8344e; }
+.tool-link::after { content: ' \2192'; }
+.tool-link--alt { color: var(--blue); }
+.tool-link--alt:hover { color: #3366aa; }
+
+/* ======================================
+   RESEARCH — LIBRARY
+   ====================================== */
+.research-list {
+  display: flex; flex-direction: column; gap: 32px;
+  max-width: 800px; margin: 0 auto;
+}
+.research-item {
+  background: var(--panel);
+  color: var(--text);
+  border: 3px solid #8b6914;
+  padding: 28px;
+  position: relative;
+  transition: transform 0.3s;
+}
+.research-item:hover { transform: translateY(-2px); }
+.research-num {
+  font-family: var(--pixel-font);
+  font-size: 2rem;
+  color: rgba(139,105,20,0.15);
+  position: absolute; top: 10px; right: 20px;
+}
+.research-title {
+  font-family: var(--pixel-font);
+  font-size: 0.42rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 6px;
+  max-width: 85%;
+}
+.research-title a {
+  color: var(--text); text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+}
+.research-title a:hover { color: var(--accent); }
+.research-super {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: #8b6914;
+  margin-bottom: 10px;
+}
+.research-desc {
+  font-family: var(--body-font);
+  font-size: 0.88rem;
+  color: #5c4a3a;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.findings { display: flex; flex-wrap: wrap; gap: 6px; }
+.finding {
+  font-family: var(--retro-font);
+  font-size: 0.95rem;
+  color: var(--accent);
+  padding: 3px 10px;
+  background: rgba(232,93,117,0.1);
+  border: 1px solid rgba(232,93,117,0.25);
+}
+
+/* ======================================
+   WRITING — SECRET NOTES
+   ====================================== */
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.secret-note {
+  background: var(--panel);
+  color: var(--text);
+  border: 2px solid #8b6914;
+  padding: 24px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.secret-note::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent var(--panel2) transparent transparent;
+  transition: border-width 0.3s;
+}
+.secret-note:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 6px 0 rgba(26,16,40,0.3);
+}
+.secret-note:hover::after {
+  border-width: 0 36px 36px 0;
+}
+.wc-num {
+  font-family: var(--pixel-font);
+  font-size: 0.3rem;
+  color: #8b6914;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.wc-title {
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.wc-desc {
+  font-family: var(--body-font);
+  font-size: 0.82rem;
+  color: #5c4a3a;
+  line-height: 1.6;
+}
+.wc-arrow {
+  font-family: var(--retro-font);
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-top: 10px;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.secret-note:hover .wc-arrow { transform: translateX(6px); }
+.writing-cta { margin-top: 28px; text-align: center; }
+.writing-cta a {
+  font-family: var(--pixel-font); font-size: 0.4rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  padding: 12px 24px;
+  border: 2px solid var(--gold);
+  background: rgba(245,200,66,0.1);
+  transition: all 0.2s;
+}
+.writing-cta a:hover {
+  background: var(--gold); color: var(--text);
+}
+
+/* ======================================
+   AWARDS — ACHIEVEMENT UNLOCKED
+   ====================================== */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.award-card {
+  background: linear-gradient(135deg, #3d2e5c, #2a1f3d);
+  border: 2px solid var(--gold);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.award-card::before {
+  content: 'ACHIEVEMENT UNLOCKED';
+  font-family: var(--pixel-font);
+  font-size: 0.25rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+.award-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(245,200,66,0.2), 0 6px 0 rgba(26,16,40,0.5);
+  border-color: #fff;
+}
+.award-icon {
+  width: 32px; height: 32px;
+  margin: 0 auto 8px;
+  image-rendering: pixelated;
+}
+.award-year {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.award-title {
+  font-family: var(--pixel-font);
+  font-size: 0.35rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.award-sub {
+  font-family: var(--body-font);
+  font-size: 0.8rem;
+  color: var(--panel3);
+  line-height: 1.5;
+}
+
+/* ======================================
+   SIDEQUESTS
+   ====================================== */
+.sq-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.sq-card {
+  background: rgba(245,230,200,0.06);
+  border: 2px solid rgba(139,105,20,0.4);
+  border-left: 4px solid var(--accent);
+  padding: 24px;
+  transition: all 0.3s;
+}
+.sq-card:nth-child(2) { border-left-color: var(--blue); }
+.sq-card:nth-child(3) { border-left-color: var(--gold); }
+.sq-card:nth-child(4) { border-left-color: var(--green); }
+.sq-card:nth-child(5) { border-left-color: var(--accent2); }
+.sq-card:hover {
+  background: rgba(245,230,200,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 rgba(26,16,40,0.3);
+}
+.sq-top {
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 10px; margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.sq-icon { width: 24px; height: 24px; image-rendering: pixelated; }
+.sq-title-group { display: flex; align-items: center; gap: 10px; }
+.sq-title {
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+.sq-tag {
+  font-family: var(--retro-font);
+  font-size: 0.9rem;
+  color: var(--gold);
+  padding: 2px 8px;
+  border: 1px solid rgba(245,200,66,0.3);
+  background: rgba(245,200,66,0.08);
+}
+.sq-desc {
+  font-family: var(--body-font);
+  font-size: 0.86rem;
+  color: var(--panel3);
+  line-height: 1.7;
+}
+
+/* ======================================
+   ABOUT — CHARACTER BIO
+   ====================================== */
+.about-card {
+  background: var(--panel);
+  color: var(--text);
+  border: 3px solid #8b6914;
+  padding: 36px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+.about-card::before {
+  content: '';
+  position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(139,105,20,0.25);
+  pointer-events: none;
+}
+.about-body {
+  font-family: var(--body-font);
+  font-size: 0.95rem;
+  color: #5c4a3a;
+  line-height: 1.8;
+}
+.about-body p + p { margin-top: 16px; }
+.about-body strong { color: var(--text); font-weight: 500; }
+.about-body a {
+  color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid rgba(232,93,117,0.3);
+}
+.about-body a:hover { border-color: var(--accent); }
+
+/* ======================================
+   CONTACT — SEND LETTER
+   ====================================== */
+#contact {
+  text-align: center;
+  padding-bottom: 60px;
+}
+.contact-card {
+  background: var(--panel);
+  color: var(--text);
+  border: 3px solid #8b6914;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+.contact-card::before {
+  content: '';
+  position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(139,105,20,0.25);
+  pointer-events: none;
+}
+.contact-cta-big {
+  display: inline-block;
+  margin: 20px 0 28px;
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid #b8344e;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.contact-cta-big:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #b8344e, 0 0 20px rgba(232,93,117,0.3);
+}
+.contact-links-row {
+  display: flex; justify-content: center;
+  gap: 24px; flex-wrap: wrap;
+}
+.contact-link-item {
+  text-decoration: none;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  transition: all 0.2s; padding: 10px;
+}
+.contact-link-item:hover { transform: translateY(-3px); }
+.cl-type {
+  font-family: var(--pixel-font);
+  font-size: 0.3rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b6914;
+}
+.cl-val {
+  font-family: var(--retro-font);
+  font-size: 1rem;
+  color: #5c4a3a;
+  transition: color 0.2s;
+}
+.contact-link-item:hover .cl-val { color: var(--accent); }
+
+/* ======================================
+   FOOTER
+   ====================================== */
+footer {
+  position: relative; z-index: 2;
+  padding: 30px var(--gutter);
+  border-top: 3px solid #8b6914;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+  max-width: var(--max); margin: 0 auto;
+}
+.footer-l {
+  font-family: var(--pixel-font);
+  font-size: 0.35rem;
+  color: var(--panel3);
+}
+.footer-r {
+  display: flex; align-items: center; gap: 8px;
+}
+.footer-r img { width: 24px; height: 24px; }
+.footer-r span {
+  font-family: var(--retro-font);
+  font-size: 0.9rem;
+  color: var(--panel3);
+}
+
+/* ======================================
+   REVEAL ANIMATIONS
+   ====================================== */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; }
+
+/* ======================================
+   RESPONSIVE
+   ====================================== */
+@media (max-width: 768px) {
+  :root { --gutter: 16px; }
+  .nav-links {
+    display: none; position: fixed; top: 56px; left: 0; right: 0;
+    background: rgba(26,16,40,0.98);
+    flex-direction: column; align-items: center;
+    padding: 24px 0; gap: 18px;
+    border-bottom: 3px solid #8b6914;
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+  .player-card { padding: 28px 20px; }
+  .player-name { font-size: 0.8rem; }
+  .stat-bar-label { width: 80px; font-size: 0.32rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .writing-grid { grid-template-columns: 1fr; }
+  .sq-grid { grid-template-columns: 1fr; }
+  .awards-grid { grid-template-columns: 1fr 1fr; }
+  .tab-bar { flex-wrap: wrap; }
+  footer { flex-direction: column; text-align: center; }
+  .cta { font-size: 0.35rem; padding: 8px 12px; }
+  .contact-links-row { gap: 12px; }
+}
+@media (max-width: 480px) {
+  .awards-grid { grid-template-columns: 1fr; }
+  .stat-bar-label { width: 65px; font-size: 0.28rem; }
+}
+
+/* ======================================
+   EXPAND/COLLAPSE TOGGLES
+   ====================================== */
+.toggle-btn {
+  font-family: var(--pixel-font); font-size: 0.35rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); background: rgba(245,200,66,0.1);
+  border: 2px solid rgba(245,200,66,0.3);
+  cursor: pointer; padding: 6px 14px;
+  transition: all 0.2s; margin-top: 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.toggle-btn:hover { background: rgba(245,200,66,0.2); border-color: var(--gold); color: var(--accent2); }
+.toggle-arrow { transition: transform 0.3s; display: inline-block; }
+.toggle-arrow.open { transform: rotate(180deg); }
+.toggle-details {
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, margin 0.3s ease;
+  margin-top: 0;
+}
+.toggle-details.open { max-height: 2000px; opacity: 1; margin-top: 14px; }
+.quest-summary, .tool-summary, .research-summary, .sq-summary, .about-summary {
+  font-family: var(--body-font); font-size: 0.95rem;
+  color: #5c4a3a; line-height: 1.6; margin-bottom: 4px;
+}
+/* Bigger section icons */
+.section-icon-lg { width: 48px; height: 48px; image-rendering: pixelated; }
+/* Decorative divider between sections */
+.section-divider {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 24px 0; opacity: 0.5;
+}
+.section-divider img { width: 24px; height: 24px; image-rendering: pixelated; }
+
+/* ======================================
+   PRINT
+   ====================================== */
+@media print {
+  nav, .scroll-progress, .starry-sky, .floating-icon, .inventory-bar { display: none !important; }
+  body { background: #fff; color: #000; cursor: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .player-card, .quest-card, .tool-card, .research-item, .secret-note, .award-card, .sq-card, .about-card, .contact-card {
+    border: 1px solid #ccc; box-shadow: none;
+    background: #fff; color: #000;
+  }
+  .section-title, .section-label { color: #000; }
+}
+</style>
+</head>
+<body>
+
+<!-- Starry sky background -->
+<div class="starry-sky" id="starrySky"></div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Floating Stardew Icons (generated by JS) -->
+<div id="floatingIcons"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-name">B.Marmat</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#experience">Quest Log</a></li>
+      <li><a href="#tools">Crafted</a></li>
+      <li><a href="#research">Library</a></li>
+      <li><a href="#writing">Notes</a></li>
+      <li><a href="#awards">Achievements</a></li>
+      <li><a href="#sidequests">Side Quests</a></li>
+      <li><a href="#about">Bio</a></li>
+      <li><a href="#contact">Mail</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ======================================
+     HERO — PLAYER PROFILE CARD
+     ====================================== -->
+<section id="hero">
+  <div class="player-card reveal">
+    <div class="player-card-header">
+      <img src="images/Stardrop.png" alt="" class="section-icon" style="width:48px;height:48px;"/>
+      <!-- TO ADD IMAGE -->
+      <!-- TO ADD PHOTO -->
+      <div class="player-name">BHUMIKA MARMAT</div>
+      <div class="player-label">IIT Kharagpur &middot; Mathematics &amp; Computing &middot; Class of 2026</div>
+    </div>
+
+    <div class="hero-typing" id="heroTyping"><span class="cursor-blink"></span></div>
+
+    <p class="hero-bio">
+      I build the tools <strong>VCs wish they had.</strong> Three internships across Palo Alto, Bengaluru, and the Japan&ndash;India corridor. My work lives at the intersection of rigorous mathematics, production-grade software, and how early-stage investment decisions actually get made.
+    </p>
+
+    <div class="stat-bars" id="statBars">
+      <div class="stat-bar-row">
+        <span class="stat-bar-label"><span class="pixel-heart">&hearts;</span> Pipeline</span>
+        <div class="stat-bar-track"><div class="stat-bar-fill" data-width="82" style="background:linear-gradient(90deg, var(--green), #7abf5c);"></div></div>
+        <span class="stat-bar-val">+42%</span>
+      </div>
+      <div class="stat-bar-row">
+        <span class="stat-bar-label"><span class="pixel-heart">&hearts;</span> Automation</span>
+        <div class="stat-bar-track"><div class="stat-bar-fill accent" data-width="83"></div></div>
+        <span class="stat-bar-val">83%</span>
+      </div>
+      <div class="stat-bar-row">
+        <span class="stat-bar-label"><span class="pixel-heart">&hearts;</span> Startups</span>
+        <div class="stat-bar-track"><div class="stat-bar-fill gold" data-width="95"></div></div>
+        <span class="stat-bar-val">3,500+</span>
+      </div>
+      <div class="stat-bar-row">
+        <span class="stat-bar-label"><span class="pixel-heart">&hearts;</span> Alpha</span>
+        <div class="stat-bar-track"><div class="stat-bar-fill blue" data-width="78"></div></div>
+        <span class="stat-bar-val">$67M</span>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="Bhumika_Marmat_Resume_VC.pdf" class="cta cta-primary" target="_blank">Download CV</a>
+      <a href="mailto:bhumika.marmat@gmail.com" class="cta">Email</a>
+      <a href="https://linkedin.com/in/bhumikamarmat" class="cta" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/tashasho" class="cta" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://substack.com/@bhumikamarmat" class="cta" target="_blank" rel="noopener">Substack</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================
+     SKILLS INVENTORY BAR
+     ====================================== -->
+<div class="inventory-bar">
+  <div class="marquee" id="skillMarquee">
+    <div class="marquee-item"><img src="images/Coffee.png" alt=""/><span>Python</span></div>
+    <div class="marquee-item"><img src="images/Star_Shards.png" alt=""/><span>Monte Carlo</span></div>
+    <div class="marquee-item"><img src="images/Magnifying_Glass.png" alt=""/><span>Bayesian Inference</span></div>
+    <div class="marquee-item"><img src="images/Farm_Computer.png" alt=""/><span>FastAPI</span></div>
+    <div class="marquee-item"><img src="images/Iridium_Axe.png" alt=""/><span>React</span></div>
+    <div class="marquee-item"><img src="images/Diamond.png" alt=""/><span>TypeScript</span></div>
+    <div class="marquee-item"><img src="images/Prismatic_Shard.png" alt=""/><span>Multi-Agent AI</span></div>
+    <div class="marquee-item"><img src="images/Book.png" alt=""/><span>Affinity CRM</span></div>
+    <div class="marquee-item"><img src="images/Scroll.png" alt=""/><span>NLP</span></div>
+    <div class="marquee-item"><img src="images/Galaxy_Soul.png" alt=""/><span>Transformers</span></div>
+    <div class="marquee-item"><img src="images/Quartz.png" alt=""/><span>XGBoost</span></div>
+    <div class="marquee-item"><img src="images/Treasure_Chest.png" alt=""/><span>Game Theory</span></div>
+    <div class="marquee-item"><img src="images/Starfruit.png" alt=""/><span>Stochastic Processes</span></div>
+    <div class="marquee-item"><img src="images/Golden_Key.png" alt=""/><span>Next.js</span></div>
+    <div class="marquee-item"><img src="images/Golden_Relic.png" alt=""/><span>Supabase</span></div>
+    <div class="marquee-item"><img src="images/Melon.png" alt=""/><span>Zapier</span></div>
+    <div class="marquee-item"><img src="images/Apple.png" alt=""/><span>n8n</span></div>
+    <div class="marquee-item"><img src="images/Stardrop.png" alt=""/><span>Gemini AI</span></div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="marquee-item"><img src="images/Coffee.png" alt=""/><span>Python</span></div>
+    <div class="marquee-item"><img src="images/Star_Shards.png" alt=""/><span>Monte Carlo</span></div>
+    <div class="marquee-item"><img src="images/Magnifying_Glass.png" alt=""/><span>Bayesian Inference</span></div>
+    <div class="marquee-item"><img src="images/Farm_Computer.png" alt=""/><span>FastAPI</span></div>
+    <div class="marquee-item"><img src="images/Iridium_Axe.png" alt=""/><span>React</span></div>
+    <div class="marquee-item"><img src="images/Diamond.png" alt=""/><span>TypeScript</span></div>
+    <div class="marquee-item"><img src="images/Prismatic_Shard.png" alt=""/><span>Multi-Agent AI</span></div>
+    <div class="marquee-item"><img src="images/Book.png" alt=""/><span>Affinity CRM</span></div>
+    <div class="marquee-item"><img src="images/Scroll.png" alt=""/><span>NLP</span></div>
+    <div class="marquee-item"><img src="images/Galaxy_Soul.png" alt=""/><span>Transformers</span></div>
+    <div class="marquee-item"><img src="images/Quartz.png" alt=""/><span>XGBoost</span></div>
+    <div class="marquee-item"><img src="images/Treasure_Chest.png" alt=""/><span>Game Theory</span></div>
+    <div class="marquee-item"><img src="images/Starfruit.png" alt=""/><span>Stochastic Processes</span></div>
+    <div class="marquee-item"><img src="images/Golden_Key.png" alt=""/><span>Next.js</span></div>
+    <div class="marquee-item"><img src="images/Golden_Relic.png" alt=""/><span>Supabase</span></div>
+    <div class="marquee-item"><img src="images/Melon.png" alt=""/><span>Zapier</span></div>
+    <div class="marquee-item"><img src="images/Apple.png" alt=""/><span>n8n</span></div>
+    <div class="marquee-item"><img src="images/Stardrop.png" alt=""/><span>Gemini AI</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ======================================
+       EXPERIENCE — QUEST LOG
+       ====================================== -->
+  <section class="section" id="experience">
+    <div class="section-header reveal">
+      <img src="images/Quests_Icon.png" alt="" class="section-icon"/>
+      <div class="section-label">Quest Log</div>
+    </div>
+    <div class="section-title reveal">A progression through <em>deal depth, automation</em>, and cross-border investing.</div>
+
+    <!-- TO ADD IMAGE -->
+
+    <div class="quest-log">
+      <div class="quest-card reveal">
+        <div class="quest-status">&#10003; Quest Complete</div>
+        <div class="quest-firm"><a href="https://www.z5.capital/" target="_blank" rel="noopener">Z5 Capital</a></div>
+        <div class="quest-meta">Aug 2025 &ndash; Apr 2026 &middot; Venture Capital Intern &middot; Palo Alto, CA / Remote</div>
+        <p class="quest-summary">Built Nexus-9 AI underwriting engine and automated deal-flow for a $50M Palo Alto fund.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <div class="quest-rewards-label">Rewards Earned</div>
+          <ul class="quest-rewards">
+            <li>Architected <strong><a href="https://github.com/tashasho/Nexus9---A-Startup-Risk-Analyser" target="_blank" rel="noopener">Nexus-9</a></strong>, a 4-agent AI underwriting engine deployed in live IC deal review &mdash; Monte Carlo stress-testing (n=10,000), Black Swan scenarios, Bayesian founder-bias correction, and Runway AI psychometric games (r&nbsp;=&nbsp;0.38&ndash;0.61 with deal outcomes).</li>
+            <li>Engineered end-to-end <a href="https://github.com/tashasho/dealflow" target="_blank" rel="noopener">deal-flow automation</a>: IMAP stealth-sourcing parser, Affinity CRM relational mapping, IC memo auto-generation, and <a href="https://github.com/tashasho/sec-filings" target="_blank" rel="noopener">SEC Filings Analyzer</a> &mdash; drove <strong>+42% sourced-to-pipeline conversion</strong> for a $50M fund.</li>
+            <li>Led <strong>150+ founder calls</strong> across 368 sourced startups; pushed 17 to dealflow pipeline and supported 2 SPV launches.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Multi-agent AI</span><span class="tag">Monte Carlo</span><span class="tag">Affinity CRM</span><span class="tag">FastAPI</span></div>
+        </div>
+      </div>
+
+      <div class="quest-card reveal d1">
+        <div class="quest-status">&#10003; Quest Complete</div>
+        <div class="quest-firm"><a href="https://beyondnextventures.com/" target="_blank" rel="noopener">Beyond Next Ventures</a></div>
+        <div class="quest-meta">May &ndash; Jul 2025 &middot; Venture Capital Intern &middot; Bengaluru</div>
+        <p class="quest-summary">Cut analyst review time 83% for a &yen;50B Japan&ndash;India deep-tech fund.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <div class="quest-rewards-label">Rewards Earned</div>
+          <ul class="quest-rewards">
+            <li>Automated inbound sourcing across Affinity CRM, Python &amp; Zapier &mdash; <strong>cut analyst review time 83% daily</strong>, unblocking evaluation of 3,500+ startups for a &yen;50B Japan&ndash;India fund.</li>
+            <li>Led market sizing for 6 deep-tech targets; built co-investor pipeline of <strong>118 micro-VCs</strong> for Japan&rarr;India deal syndication.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Zapier</span><span class="tag">Affinity</span><span class="tag">n8n</span><span class="tag">Japan&ndash;India corridor</span></div>
+        </div>
+      </div>
+
+      <div class="quest-card reveal d2">
+        <div class="quest-status">&#10003; Quest Complete</div>
+        <div class="quest-firm">Grad Capital</div>
+        <div class="quest-meta">Oct &ndash; Nov 2024 &middot; Associate &middot; Bengaluru / Remote</div>
+        <p class="quest-summary">Sourced 200+ startups, pushed 8 to pipeline, 2 funded.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <div class="quest-rewards-label">Rewards Earned</div>
+          <ul class="quest-rewards">
+            <li>Sourced 200+ startups across IIT KGP &amp; Ashoka; led 35+ founder calls &mdash; <strong>8 pushed to pipeline, 2 funded</strong>. Built Virtual Data Room improving efficiency by 30%.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Deal Sourcing</span><span class="tag">Pitch Reports</span><span class="tag">Data Room</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       THINGS I'VE BUILT — CRAFTED ITEMS
+       ====================================== -->
+  <section class="section" id="tools">
+    <div class="section-header reveal">
+      <img src="images/Iridium_Axe.png" alt="" class="section-icon"/>
+      <div class="section-label">Crafted Items</div>
+    </div>
+    <div class="section-title reveal">Tools for funds. <em>Systems for founders.</em> And everything else.</div>
+
+    <div class="tab-bar reveal" id="tabBar">
+      <button class="tab-btn active" data-tab="vc-tools">VC Tools</button>
+      <button class="tab-btn" data-tab="startup-tools">Startup Tools</button>
+      <button class="tab-btn" data-tab="side-builds">Side Builds</button>
+    </div>
+
+    <!-- TAB 1: VC TOOLS -->
+    <div class="tab-panel active" id="panel-vc-tools">
+      <div class="tools-grid">
+        <div class="tool-card reveal">
+          <!-- TO ADD IMAGE -->
+          <img src="images/Farm_Computer.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">Nexus-9</div><div class="tool-num">T-001</div></div>
+          <p class="tool-summary">4-agent AI underwriting engine for live IC deal review.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">Monte Carlo stress-testing, Black Swan scenario modelling, Bayesian founder-bias correction, and psychometric game-based founder assessment.</p>
+            <div class="tool-impact">TVPI: 1.24&times; &rarr; 1.91&times; &middot; 54% reduction in Type II errors</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">TypeScript</span><span class="tag">Multi-agent</span><span class="tag">Monte Carlo</span><span class="tag">React</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/Nexus9---A-Startup-Risk-Analyser" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card reveal d1">
+          <img src="images/Shipping_Bin_Anim.gif" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">Deal-Flow Engine</div><div class="tool-num">T-002</div></div>
+          <p class="tool-summary">Enterprise AI deal-flow pipeline processing 10-20 deals/day.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">Multi-channel sourcing from LinkedIn, GitHub Trending, Twitter/X, Product Hunt, Hacker News, Reddit. Gemini 2.0 scoring, Slack-native triage, and automated cold outreach.</p>
+            <div class="tool-impact">+42% sourced-to-pipeline conversion &middot; 10&ndash;20 deals/day</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Gemini AI</span><span class="tag">Slack</span><span class="tag">Airtable</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/dealflow" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card reveal d2">
+          <img src="images/Scroll.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">SEC Filings Analyzer</div><div class="tool-num">T-003</div></div>
+          <p class="tool-summary">Automated SEC Form D parsing for investment insights.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">Parses SEC Form D filings to surface investment landscape insights. Extracts NDR trends, revenue multiples, and M&amp;A triggers from S-1s and 10-Ks at a fraction of analyst time.</p>
+            <div class="tool-impact">Automated extraction across S-1 / 10-K / Form D corpus</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Transformers</span><span class="tag">Plotly</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/sec-filings" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card reveal d3">
+          <img src="images/Magnifying_Glass.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">Inbound Sourcing Workflow</div><div class="tool-num">T-004</div></div>
+          <p class="tool-summary">Automated inbound evaluation for a &yen;50B fund.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">Automated inbound deal evaluation integrating Affinity CRM, Python, and Zapier. Cut analyst review time 83% daily at a &yen;50B Japan&ndash;India fund, enabling coverage of 3,500+ startups.</p>
+            <div class="tool-impact">83% analyst time reduction &middot; 3,500+ startups evaluated</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">Zapier</span><span class="tag">Affinity</span><span class="tag">Python</span><span class="tag">n8n</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card reveal d4">
+          <img src="images/Star_Shards.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">Startup Investments Patterns</div><div class="tool-num">T-005</div></div>
+          <p class="tool-summary">Crunchbase data analysis for investment patterns.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">Data analysis of Crunchbase investment data (2013) to understand why certain investments worked or didn't. Pattern recognition across funding rounds, sectors, and outcomes.</p>
+            <div class="tool-impact">Crunchbase pattern analysis</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">Python</span><span class="tag">Data Analysis</span><span class="tag">Crunchbase</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/Startup-Investments-Patterns-2013-Crunchbase" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: STARTUP TOOLS -->
+    <div class="tab-panel" id="panel-startup-tools">
+      <div class="tools-grid">
+        <div class="tool-card reveal">
+          <img src="images/Iridium_Axe.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">Forge</div><div class="tool-num">S-001</div></div>
+          <p class="tool-summary">AI resource orchestration for early-stage founders.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">AI-powered resource orchestration system for founders. Helps early-stage teams find the right resources, connections, and operational support. Built on Next.js with Supabase backend.</p>
+            <div class="tool-impact">Full-stack founder tooling &middot; Next.js + Supabase</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">React</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/forge" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card reveal d1">
+          <img src="images/Book.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">thinkor</div><div class="tool-num">S-002</div></div>
+          <p class="tool-summary">Thinking-out-loud companion for Claude prompting.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">A thinking-out-loud companion for Claude prompting. Helps iterate on prompts through structured conversation and reflection &mdash; because the gap between what you want and what you ask for is where most AI value leaks.</p>
+            <div class="tool-impact">Claude prompting assistant</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Prompting</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/thinkor" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card reveal d2">
+          <img src="images/Mail.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">Social Media Automator</div><div class="tool-num">S-003</div></div>
+          <p class="tool-summary">End-to-end social posting automation for X + LinkedIn.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">End-to-end social media posting automation for X and LinkedIn. Handles the full content pipeline from creation to posting so you stop wasting time on 1mm alignments in Canva.</p>
+            <div class="tool-impact">Automated X + LinkedIn posting pipeline</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">Python</span><span class="tag">API</span><span class="tag">Automation</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/social-media-posting-automator" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: SIDE BUILDS -->
+    <div class="tab-panel" id="panel-side-builds">
+      <div class="tools-grid">
+        <div class="tool-card reveal">
+          <!-- TO ADD IMAGE -->
+          <img src="images/Treasure_Chest.png" alt="" class="tool-card-icon"/>
+          <div class="tool-top"><div class="tool-name">CityScope</div><div class="tool-num">X-001</div></div>
+          <p class="tool-summary">Stardew Valley-style pixel art event maps for Indian cities.</p>
+          <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+          <div class="toggle-details">
+            <p class="tool-desc">Zero-dependency, pure HTML5 Canvas at 60fps. Renders live events across Bengaluru and Mumbai as a fully interactive retro game world with auto-rickshaws, monsoon rain, and metro trains.</p>
+            <div class="tool-impact">Zero dependencies &middot; Pure Canvas &middot; 75+ live events</div>
+            <div class="tag-row" style="margin-bottom:10px;"><span class="tag">HTML5 Canvas</span><span class="tag">JavaScript</span><span class="tag">Pixel Art</span></div>
+            <div class="tool-links">
+              <a href="https://github.com/tashasho/cityscope" class="tool-link" target="_blank" rel="noopener">View on GitHub</a>
+              <a href="https://cityscope-tau.vercel.app" class="tool-link tool-link--alt" target="_blank" rel="noopener">Live Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       RESEARCH — LIBRARY
+       ====================================== -->
+  <section class="section" id="research">
+    <div class="section-header reveal">
+      <img src="images/Book.png" alt="" class="section-icon"/>
+      <div class="section-label">Library</div>
+    </div>
+    <div class="section-title reveal" style="text-align:center;">Bayesian statistics meets <em>early-stage investment theory.</em></div>
+
+    <div class="research-list">
+      <div class="research-item reveal">
+        <div class="research-num">01</div>
+        <div class="research-title"><a href="https://drive.google.com/drive/folders/1XtRsE7VuXNdXhJYwnLFzW2u-VarO93W4?usp=sharing" target="_blank" rel="noopener">A Probabilistic &amp; AI-Augmented Framework for Early-Stage VC</a></div>
+        <div class="research-super">Prof. T. Bhattacharjee &middot; IIT Kharagpur &middot; 2025&ndash;2026 &middot; BTP</div>
+        <p class="research-summary">Bayesian framework formalising cognitive biases in VC underwriting, calibrated on 500+ Indian deep-tech deals.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="research-desc">Developed the Bias-Adjusted Valuation (BAV) model &mdash; a Bayesian odds-ratio framework formalising cognitive biases in VC underwriting, calibrated on 500+ Indian deep-tech deals. Extended to a dynamic Ornstein&ndash;Uhlenbeck process with signalling-game equilibrium, proving a chilling effect on patent disclosure under information asymmetry. Copula-based portfolio extension revealed severe tail-risk underestimation under independence assumptions.</p>
+          <div class="findings">
+            <span class="finding">&beta;_geo &asymp; 0.22 geographic bias</span>
+            <span class="finding">$67M alpha per $100M fund</span>
+            <span class="finding">2.4&times; tail-risk underestimation</span>
+            <span class="finding">54% &darr; Type II errors</span>
+            <span class="finding">TVPI 1.24&times; &rarr; 1.91&times;</span>
+          </div>
+          <div class="tool-links" style="margin-top:14px;">
+            <a href="https://drive.google.com/drive/folders/1XtRsE7VuXNdXhJYwnLFzW2u-VarO93W4?usp=sharing" class="tool-link" target="_blank" rel="noopener">View Full BTP Work</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="research-item reveal d1">
+        <div class="research-num">02</div>
+        <div class="research-title"><a href="https://drive.google.com/drive/folders/1XtRsE7VuXNdXhJYwnLFzW2u-VarO93W4?usp=sharing" target="_blank" rel="noopener">Overcoming Subjectivity Bias by Feature Modelling</a></div>
+        <div class="research-super">Prof. T. Bhattacharjee &middot; IIT Kharagpur &middot; 2025</div>
+        <p class="research-summary">SVM-based startup valuation prediction with VC risk-aligned scoring.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="research-desc">SVM RBF regression predicting startup valuation across 15+ features, optimised with sigmoid threshold tuning for VC risk-aligned readiness scoring.</p>
+          <div class="findings"><span class="finding">&gt;80% valuation accuracy</span><span class="finding">F1 = 0.77 on synthetic data</span></div>
+        </div>
+      </div>
+
+      <div class="research-item reveal d2">
+        <div class="research-num">03</div>
+        <div class="research-title">Game-Theoretic Optimisation on Corruption Networks</div>
+        <div class="research-super">Prof. Dripto Bakshi &middot; IIT Kharagpur &middot; 2024</div>
+        <p class="research-summary">Game-theoretic path optimisation on political social networks.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="research-desc">2-way mathematical optimisation (path &amp; cost) on political social networks modelled as directed graphs. 48% success rate via reward-based routing on large organisational DAGs.</p>
+          <div class="findings"><span class="finding">48% routing success rate</span><span class="finding">Directed graph optimisation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       WRITING — SECRET NOTES
+       ====================================== -->
+  <section class="section" id="writing">
+    <div class="section-header reveal">
+      <img src="images/Secret_Note.png" alt="" class="section-icon"/>
+      <div class="section-label">Secret Notes</div>
+    </div>
+    <div class="section-title reveal">I think clearly <em>in public.</em></div>
+
+    <div class="writing-grid">
+      <a href="https://substack.com/home/post/p-197348457" class="secret-note reveal" target="_blank" rel="noopener">
+        <div class="wc-num">Note 01</div>
+        <div class="wc-title">Post Title Here</div>
+        <div class="wc-desc">Edit this description in index.html &mdash; replace with your post's one-line summary.</div>
+        <div class="wc-arrow">&rarr;</div>
+      </a>
+
+      <a href="https://substack.com/home/post/p-197348378" class="secret-note reveal d1" target="_blank" rel="noopener">
+        <div class="wc-num">Note 02</div>
+        <div class="wc-title">Post Title Here</div>
+        <div class="wc-desc">Edit this description in index.html &mdash; replace with your post's one-line summary.</div>
+        <div class="wc-arrow">&rarr;</div>
+      </a>
+
+      <a href="https://substack.com/home/post/p-197347228" class="secret-note reveal d2" target="_blank" rel="noopener">
+        <div class="wc-num">Note 03</div>
+        <div class="wc-title">Post Title Here</div>
+        <div class="wc-desc">Edit this description in index.html &mdash; replace with your post's one-line summary.</div>
+        <div class="wc-arrow">&rarr;</div>
+      </a>
+
+      <a href="https://substack.com/home/post/p-197337766" class="secret-note reveal d3" target="_blank" rel="noopener">
+        <div class="wc-num">Note 04</div>
+        <div class="wc-title">Post Title Here</div>
+        <div class="wc-desc">Edit this description in index.html &mdash; replace with your post's one-line summary.</div>
+        <div class="wc-arrow">&rarr;</div>
+      </a>
+
+      <a href="https://substack.com/home/post/p-197337619" class="secret-note reveal d4" target="_blank" rel="noopener">
+        <div class="wc-num">Note 05</div>
+        <div class="wc-title">Post Title Here</div>
+        <div class="wc-desc">Edit this description in index.html &mdash; replace with your post's one-line summary.</div>
+        <div class="wc-arrow">&rarr;</div>
+      </a>
+
+      <a href="https://substack.com/home/post/p-197337244" class="secret-note reveal" target="_blank" rel="noopener">
+        <div class="wc-num">Note 06</div>
+        <div class="wc-title">Post Title Here</div>
+        <div class="wc-desc">Edit this description in index.html &mdash; replace with your post's one-line summary.</div>
+        <div class="wc-arrow">&rarr;</div>
+      </a>
+    </div>
+
+    <div class="writing-cta reveal">
+      <a href="https://substack.com/@bhumikamarmat" target="_blank" rel="noopener">Read All on Substack &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ======================================
+       AWARDS — ACHIEVEMENTS UNLOCKED
+       ====================================== -->
+  <section class="section" id="awards">
+    <div class="section-header reveal">
+      <img src="images/Diamond.png" alt="" class="section-icon"/>
+      <div class="section-label">Achievements Unlocked</div>
+    </div>
+    <div class="section-title reveal">Recognition along <em>the way.</em></div>
+
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <img src="images/Prismatic_Shard.png" alt="" class="award-icon"/>
+        <div class="award-year">2020</div>
+        <div class="award-title">NTSE National Scholar</div>
+        <div class="award-sub">Top 0.1% among 1,000,000+ candidates &middot; NCERT Government Scholarship</div>
+      </div>
+      <div class="award-card reveal d1">
+        <img src="images/Diamond.png" alt="" class="award-icon"/>
+        <div class="award-year">2021</div>
+        <div class="award-title">INSPIRE Fellowship &middot; Govt. of India</div>
+        <div class="award-sub">Top 1% across India's national examinations</div>
+      </div>
+      <div class="award-card reveal d2">
+        <img src="images/Golden_Relic.png" alt="" class="award-icon"/>
+        <div class="award-year">2024</div>
+        <div class="award-title">National Runner-Up &middot; LBO Case, MnAnalyse</div>
+        <div class="award-sub">Premier National M&amp;A Case Competition &middot; IIT Guwahati</div>
+      </div>
+      <div class="award-card reveal d3">
+        <img src="images/Star_Shards.png" alt="" class="award-icon"/>
+        <div class="award-year">2024</div>
+        <div class="award-title">National Finalist &middot; Insight Masters (ISB Hyderabad)</div>
+        <div class="award-sub">Business Analytics &middot; AWL Resolve, IIM Ahmedabad</div>
+      </div>
+      <div class="award-card reveal d4">
+        <img src="images/Stardrop.png" alt="" class="award-icon"/>
+        <div class="award-year">2023</div>
+        <div class="award-title">Silver Contingent &middot; ACWG Debate, G20</div>
+        <div class="award-sub">Best Debater &middot; Sahodaya Regional &middot; Broke at LSRPD, DTU PD</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       SIDEQUESTS
+       ====================================== -->
+  <section class="section" id="sidequests">
+    <div class="section-header reveal">
+      <img src="images/Quests.png" alt="" class="section-icon"/>
+      <div class="section-label">Side Quests</div>
+    </div>
+    <div class="section-title reveal">Things that don't fit <em>anywhere else</em> &mdash; but shape how I think.</div>
+
+    <div class="sq-grid">
+      <div class="sq-card reveal">
+        <div class="sq-top">
+          <div class="sq-title-group">
+            <img src="images/Dwarf_Scroll_II.png" alt="" class="sq-icon"/>
+            <div class="sq-title">Debating</div>
+          </div>
+          <div class="sq-tag">Public Discourse</div>
+        </div>
+        <p class="sq-summary">G20 Silver Contingent and IIT KGP Intras winner.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="sq-desc">Silver Contingent at ACWG Debate, G20. Winner, IIT KGP Debating Society Intras. Broke at LSRPD and DTU PD. Debating taught me that every argument has a structure &mdash; and that structure is almost always the thing being contested, not the surface claim.</p>
+        </div>
+      </div>
+
+      <div class="sq-card reveal d1">
+        <div class="sq-top">
+          <div class="sq-title-group">
+            <img src="images/Sunflower.png" alt="" class="sq-icon"/>
+            <div class="sq-title">Period &mdash; The Menstrual Movement</div>
+          </div>
+          <div class="sq-tag">Social Founding</div>
+        </div>
+        <p class="sq-summary">Founded the Ujjain chapter of a global menstrual health org.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="sq-desc">Founded the Ujjain chapter of Period, a global menstrual health organisation. Built community programs from scratch in a tier-2 city &mdash; which turns out to require the same skills as deal sourcing: find people, build trust, move things without authority.</p>
+        </div>
+      </div>
+
+      <div class="sq-card reveal d2">
+        <div class="sq-top">
+          <div class="sq-title-group">
+            <img src="images/Secret_Note.png" alt="" class="sq-icon"/>
+            <div class="sq-title">Journalism</div>
+          </div>
+          <div class="sq-tag">Writing</div>
+        </div>
+        <p class="sq-summary">Youngest journalist at the Free Press Journal.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="sq-desc">Youngest journalist at the Free Press Journal. Learned early that the most important sentence is always the first one, and that clarity is a form of respect for the reader &mdash; something I now apply to IC memos.</p>
+        </div>
+      </div>
+
+      <div class="sq-card reveal d3">
+        <div class="sq-top">
+          <div class="sq-title-group">
+            <img src="images/Dwarf_Gadget.png" alt="" class="sq-icon"/>
+            <div class="sq-title">Robotics</div>
+          </div>
+          <div class="sq-tag">Hardware</div>
+        </div>
+        <p class="sq-summary">Silver medal, Aavishkar International Robotics Championship.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="sq-desc">Silver medal, Aavishkar International Robotics Championship. Building things that move in the physical world is a good antidote to spending too much time in models and abstractions.</p>
+        </div>
+      </div>
+
+      <div class="sq-card reveal d4">
+        <div class="sq-top">
+          <div class="sq-title-group">
+            <img src="images/Rare_Disc.png" alt="" class="sq-icon"/>
+            <div class="sq-title">Music &amp; Art</div>
+          </div>
+          <div class="sq-tag">Creative Practice</div>
+        </div>
+        <p class="sq-summary">2x Gold in national singing; merit in Gandharva Mahavidyalaya.</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p class="sq-desc">2&times; Gold, Anuvrat National Singing Competition. Gold, Anuvrat State Art Competition. Merit, Gandharva Mahavidyalaya. Creative practice is where I learned that getting something right and making it beautiful are not the same problem &mdash; and both matter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       ABOUT — CHARACTER BIO
+       ====================================== -->
+  <section class="section" id="about">
+    <div class="section-header reveal">
+      <img src="images/Catalogue.png" alt="" class="section-icon"/>
+      <div class="section-label">Character Bio</div>
+    </div>
+    <div class="section-title reveal">The player behind <em>the profile.</em></div>
+
+    <div class="about-card reveal">
+      <!-- TO ADD PHOTO -->
+      <div class="about-body">
+        <p>I'm a final-year Mathematics &amp; Computing student at <a href="https://www.iitkgp.ac.in/" target="_blank" rel="noopener">IIT Kharagpur</a>, graduating in 2026. I ended up in VC not by accident but by chasing a specific question: why does the way investment decisions get made so rarely reflect the actual mathematics of uncertainty?</p>
+        <button class="toggle-btn" onclick="toggleDetail(this)">Show more <span class="toggle-arrow">&#9660;</span></button>
+        <div class="toggle-details">
+          <p>That question has taken me across three funds &mdash; <strong><a href="https://www.z5.capital/" target="_blank" rel="noopener">Z5 Capital</a></strong> in Palo Alto, <strong><a href="https://beyondnextventures.com/" target="_blank" rel="noopener">Beyond Next Ventures</a></strong> in Bengaluru, and <strong>Grad Capital</strong> &mdash; and through a year of <a href="https://drive.google.com/drive/folders/1XtRsE7VuXNdXhJYwnLFzW2u-VarO93W4?usp=sharing" target="_blank" rel="noopener">supervised research</a> with Prof. Bhattacharjee formalising those intuitions into working models. The tools I've built aren't portfolio projects; they run in live IC environments.</p>
+          <p>I'm looking for a full-time analyst seat at an early-stage fund &mdash; ideally deep-tech, AI, or India corridor &mdash; where the technical depth I bring actually changes how investment decisions get made. Based in Bengaluru, open across India.</p>
+          <p>Outside investing: I debate (broke at LSRPD, G20 Silver contingent), founded a social chapter in Ujjain, was the youngest journalist at the Free Press Journal, and I <a href="https://substack.com/@bhumikamarmat" target="_blank" rel="noopener">write on Substack</a>. I think clearly in public.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       CONTACT — SEND LETTER
+       ====================================== -->
+  <section class="section" id="contact">
+    <div class="section-header reveal" style="justify-content:center;">
+      <img src="images/Mail.png" alt="" class="section-icon"/>
+      <div class="section-label">Send Letter</div>
+    </div>
+    <div class="section-title reveal" style="text-align:center;">If you're building <em>that team</em>, I'd love to talk.</div>
+
+    <div class="contact-card reveal">
+      <a href="mailto:bhumika.marmat@gmail.com" class="contact-cta-big">Let's Connect &rarr;</a>
+
+      <div class="contact-links-row">
+        <a href="mailto:bhumika.marmat@gmail.com" class="contact-link-item">
+          <span class="cl-type">Email</span>
+          <span class="cl-val">bhumika.marmat@gmail.com</span>
+        </a>
+        <a href="https://linkedin.com/in/bhumikamarmat" class="contact-link-item" target="_blank" rel="noopener">
+          <span class="cl-type">LinkedIn</span>
+          <span class="cl-val">linkedin.com/in/bhumikamarmat</span>
+        </a>
+        <a href="https://github.com/tashasho" class="contact-link-item" target="_blank" rel="noopener">
+          <span class="cl-type">GitHub</span>
+          <span class="cl-val">github.com/tashasho</span>
+        </a>
+        <a href="https://substack.com/@bhumikamarmat" class="contact-link-item" target="_blank" rel="noopener">
+          <span class="cl-type">Substack</span>
+          <span class="cl-val">substack.com/@bhumikamarmat</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-l">&copy; 2026 Bhumika Marmat</div>
+    <div class="footer-r">
+      <img src="images/Cat.gif" alt="" style="width:28px;height:28px;"/>
+      <span>IIT Kharagpur &middot; Mathematics &amp; Computing</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* ======================================
+   STARRY SKY — CSS-generated stars
+   ====================================== */
+(function() {
+  var sky = document.getElementById('starrySky');
+  var count = window.innerWidth < 600 ? 80 : 180;
+  for (var i = 0; i < count; i++) {
+    var star = document.createElement('div');
+    star.className = 'star';
+    var size = Math.random() * 3 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
+    star.style.setProperty('--o1', (0.2 + Math.random() * 0.4).toString());
+    star.style.setProperty('--o2', (0.6 + Math.random() * 0.4).toString());
+    star.style.animationDelay = (Math.random() * 4) + 's';
+    sky.appendChild(star);
+  }
+})();
+
+/* ======================================
+   FLOATING STARDEW ICONS — DRAGGABLE
+   ====================================== */
+(function() {
+  var container = document.getElementById('floatingIcons');
+  var icons = [
+    { src: 'images/Stardrop.png', size: 40 },
+    { src: 'images/Star_Shards.png', size: 36 },
+    { src: 'images/Coffee.png', size: 32 },
+    { src: 'images/Cat.gif', size: 44 },
+    { src: 'images/Starfruit.png', size: 34 },
+    { src: 'images/Pancakes.png', size: 36 },
+    { src: 'images/Prismatic_Slime.gif', size: 40 },
+    { src: 'images/Golden_Chicken.png', size: 36 },
+    { src: 'images/Dandelion.png', size: 28 },
+    { src: 'images/Sunflower.png', size: 32 },
+    { src: 'images/Tulip.png', size: 28 },
+    { src: 'images/Treasure_Chest.png', size: 38 },
+    { src: 'images/Melon.png', size: 30 },
+    { src: 'images/Strawberry.png', size: 28 },
+    { src: 'images/Dog.gif', size: 40 },
+    { src: 'images/Blue_Chicken.png', size: 34 },
+    { src: 'images/Grape.png', size: 26 },
+    { src: 'images/Apple.png', size: 28 },
+    { src: 'images/Iridium_Bat_Anim.gif', size: 36 },
+    { src: 'images/Golden_Relic.png', size: 32 },
+  ];
+
+  var pageHeight = Math.max(document.body.scrollHeight, 4000);
+  var pageWidth = window.innerWidth;
+
+  icons.forEach(function(icon, i) {
+    var el = document.createElement('img');
+    el.src = icon.src;
+    el.className = 'floating-icon';
+    el.style.width = icon.size + 'px';
+    el.style.height = icon.size + 'px';
+
+    // Distribute across the page edges
+    var side = i % 2 === 0 ? 'left' : 'right';
+    if (side === 'left') {
+      el.style.left = (Math.random() * 80 + 10) + 'px';
+    } else {
+      el.style.right = (Math.random() * 80 + 10) + 'px';
+    }
+    el.style.top = (Math.random() * pageHeight * 0.9 + 100) + 'px';
+
+    var bobDur = 3 + Math.random() * 4;
+    var bobDelay = Math.random() * 3;
+    var bobY = -(8 + Math.random() * 16);
+    var rot = (Math.random() - 0.5) * 10;
+    el.style.setProperty('--bob-dur', bobDur + 's');
+    el.style.setProperty('--bob-delay', bobDelay + 's');
+    el.style.setProperty('--bob-y', bobY + 'px');
+    el.style.setProperty('--rot', rot + 'deg');
+
+    container.appendChild(el);
+
+    // Draggable
+    var isDragging = false;
+    var offsetX = 0, offsetY = 0;
+
+    el.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      el.classList.add('dragging');
+      var rect = el.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+      el.style.position = 'fixed';
+      el.style.left = (e.clientX - offsetX) + 'px';
+      el.style.top = (e.clientY - offsetY) + 'px';
+      el.style.right = 'auto';
+      el.style.zIndex = '1000';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      el.style.left = (e.clientX - offsetX) + 'px';
+      el.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', function() {
+      if (!isDragging) return;
+      isDragging = false;
+      el.classList.remove('dragging');
+    });
+
+    // Touch support
+    el.addEventListener('touchstart', function(e) {
+      isDragging = true;
+      el.classList.add('dragging');
+      var touch = e.touches[0];
+      var rect = el.getBoundingClientRect();
+      offsetX = touch.clientX - rect.left;
+      offsetY = touch.clientY - rect.top;
+      el.style.position = 'fixed';
+      el.style.left = (touch.clientX - offsetX) + 'px';
+      el.style.top = (touch.clientY - offsetY) + 'px';
+      el.style.right = 'auto';
+      el.style.zIndex = '1000';
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      var touch = e.touches[0];
+      el.style.left = (touch.clientX - offsetX) + 'px';
+      el.style.top = (touch.clientY - offsetY) + 'px';
+    }, { passive: true });
+
+    document.addEventListener('touchend', function() {
+      if (!isDragging) return;
+      isDragging = false;
+      el.classList.remove('dragging');
+    });
+  });
+})();
+
+/* ======================================
+   SCROLL PROGRESS
+   ====================================== */
+(function() {
+  var bar = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', function() {
+    var t = document.documentElement.scrollHeight - window.innerHeight;
+    if (t > 0) bar.style.transform = 'scaleX(' + (window.scrollY / t) + ')';
+  }, { passive: true });
+})();
+
+/* ======================================
+   TYPING EFFECT — RPG Style
+   ====================================== */
+(function() {
+  var phrases = [
+    'VC Intern',
+    'Tool Builder',
+    'Math Nerd',
+    'Substack Writer'
+  ];
+  var el = document.getElementById('heroTyping');
+  if (!el) return;
+  var pIdx = 0, cIdx = 0, deleting = false;
+  var speed = 80, delSpeed = 40, pause = 2200;
+
+  function type() {
+    var current = phrases[pIdx];
+    if (!deleting) {
+      el.innerHTML = '> ' + current.substring(0, cIdx + 1) + '<span class="cursor-blink"></span>';
+      cIdx++;
+      if (cIdx === current.length) {
+        deleting = true;
+        setTimeout(type, pause);
+        return;
+      }
+      setTimeout(type, speed + Math.random() * 30);
+    } else {
+      el.innerHTML = '> ' + current.substring(0, cIdx) + '<span class="cursor-blink"></span>';
+      cIdx--;
+      if (cIdx < 0) {
+        deleting = false;
+        cIdx = 0;
+        pIdx = (pIdx + 1) % phrases.length;
+        setTimeout(type, 500);
+        return;
+      }
+      setTimeout(type, delSpeed);
+    }
+  }
+  setTimeout(type, 1000);
+})();
+
+/* ======================================
+   NAV
+   ====================================== */
+(function() {
+  var nav = document.getElementById('navbar');
+  var lastScroll = 0;
+  window.addEventListener('scroll', function() {
+    var sy = window.scrollY;
+    if (sy > lastScroll && sy > 200) {
+      nav.style.transform = 'translateY(-100%)';
+    } else {
+      nav.style.transform = 'translateY(0)';
+    }
+    lastScroll = sy;
+  }, { passive: true });
+
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function() {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+})();
+
+/* ======================================
+   SCROLL REVEALS
+   ====================================== */
+(function() {
+  var obs = new IntersectionObserver(
+    function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    },
+    { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+  // Hero instant reveal
+  document.querySelectorAll('#hero .reveal').forEach(function(el, i) {
+    setTimeout(function() { el.classList.add('visible'); }, 200 + i * 120);
+  });
+})();
+
+/* ======================================
+   TAB SWITCHING
+   ====================================== */
+(function() {
+  var btns = document.querySelectorAll('.tab-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+      var panel = document.getElementById('panel-' + btn.dataset.tab);
+      panel.classList.add('active');
+      panel.querySelectorAll('.reveal').forEach(function(el, i) {
+        el.classList.remove('visible');
+        setTimeout(function() { el.classList.add('visible'); }, 50 + i * 80);
+      });
+    });
+  });
+})();
+
+/* ======================================
+   STAT BAR ANIMATION
+   ====================================== */
+(function() {
+  var bars = document.querySelectorAll('.stat-bar-fill');
+  var animated = false;
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !animated) {
+      animated = true;
+      bars.forEach(function(bar) {
+        var w = bar.getAttribute('data-width');
+        setTimeout(function() {
+          bar.style.width = w + '%';
+        }, 300);
+      });
+    }
+  }, { threshold: 0.3 });
+  var statSection = document.getElementById('statBars');
+  if (statSection) obs.observe(statSection);
+})();
+
+/* ======================================
+   SMOOTH ANCHOR SCROLL
+   ====================================== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - 70,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+/* ======================================
+   PARALLAX STARS ON SCROLL
+   ====================================== */
+(function() {
+  var sky = document.getElementById('starrySky');
+  window.addEventListener('scroll', function() {
+    sky.style.transform = 'translateY(' + (window.scrollY * 0.15) + 'px)';
+  }, { passive: true });
+})();
+
+/* ======================================
+   TOGGLE DETAILS
+   ====================================== */
+function toggleDetail(btn) {
+  var details = btn.nextElementSibling;
+  var arrow = btn.querySelector('.toggle-arrow');
+  details.classList.toggle('open');
+  if (arrow) arrow.classList.toggle('open');
+  if (details.classList.contains('open')) {
+    btn.firstChild.textContent = 'Show less ';
+  } else {
+    btn.firstChild.textContent = 'Show more ';
+  }
+}
+</script>
+</body>
+</html>
